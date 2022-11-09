@@ -17,6 +17,7 @@ private:
     QByteArray transportingData;
 
     void sendToClient(QString message);
+    void broadcast(QString message);
 public slots:
     void incomingConnection(qintptr socketDescriptor);
     void slotReadyRead();

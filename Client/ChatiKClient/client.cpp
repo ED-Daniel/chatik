@@ -9,7 +9,12 @@ void Client::init(QObject * parent)
 
 void Client::connectToServer(QString address, quint16 port)
 {
-    clientSocket->connectToHost(address, port);
+    try {
+        clientSocket->connectToHost(address, port);
+    }
+    catch (std::exception &e) {
+        qDebug() << "Already Connected";
+    }
 }
 
 void Client::sendToServer(QString message)
