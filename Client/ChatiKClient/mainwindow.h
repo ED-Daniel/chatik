@@ -7,6 +7,8 @@
 #include<QLabel>
 #include<QDateTime>
 #include <QBoxLayout>
+#include <QMediaPlayer>
+#include <QAudioOutput>
 
 #include "client.h"
 #include "vuex.h"

@@ -41,6 +41,15 @@ void MainWindow::createMessage(const TextMessage &message)
 {
     ui->messagesArea->append(message.getSender() + ":\n" + message.getText() + "\n\n");
     ui->statusbar->showMessage(message.getSender() + ": " + message.getText());
+    if (Vuex::Instance().getStatus() != ClientStatuses::DONT_DISTURB) {
+        QMediaPlayer *player = new QMediaPlayer;
+        QAudioOutput *audio = new QAudioOutput;
+        player->setAudioOutput(audio);
+        player->setSource(QUrl::fromLocalFile("/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/ChatiKClient/sound.wav"));
+        audio->setVolume(50);
+        player->play();
+        qDebug() << "AUDIO";
+    }
 }
 
 void MainWindow::setClients(const QJsonArray &info)
@@ -88,7 +97,7 @@ void MainWindow::on_actionConnect_triggered()
 void MainWindow::connectToServer()
 {
     Client::Instance().connectToServer(Vuex::Instance().getServerIp(), Vuex::Instance().getPort());
-    JoinInfo * info = new JoinInfo(Vuex::Instance().getUsername());
+    JoinInfo * info = new JoinInfo(Vuex::Instance().getUsername(), Vuex::Instance().getStatus());
     Client::Instance().join(*info);
     delete info;
 }

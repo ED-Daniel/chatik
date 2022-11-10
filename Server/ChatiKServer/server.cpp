@@ -111,7 +111,7 @@ void Server::slotReadyRead()
                         info->getName(),
                         serverSocket->peerAddress().toString(),
                         QDateTime::currentDateTime().toString(),
-                        ClientStatuses::ONLINE
+                        info->getStatus()
                      );
             clientsInfo.insert(serverSocket->socketDescriptor(), newClient);
             emit clientConnected(*newClient);

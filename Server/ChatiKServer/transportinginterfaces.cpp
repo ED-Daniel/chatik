@@ -63,8 +63,9 @@ int ClientInfo::getStatus() const {
     return jsonObject["status"].toInt();
 }
 
-JoinInfo::JoinInfo(QString name) : BasicMessage(SocketEvents::JOIN) {
+JoinInfo::JoinInfo(QString name, ClientStatuses status) : BasicMessage(SocketEvents::JOIN) {
     jsonObject.insert("name", name);
+    jsonObject.insert("status", status);
 
     document.setObject(jsonObject);
 }
@@ -73,6 +74,11 @@ JoinInfo::JoinInfo(QByteArray bytes) : BasicMessage(bytes) {}
 
 QString JoinInfo::getName() const {
     return jsonObject["name"].toString();
+}
+
+ClientStatuses JoinInfo::getStatus() const
+{
+    return (ClientStatuses) jsonObject["status"].toInt();
 }
 
 ClientsInfo::ClientsInfo(QList<ClientInfo *> clientsInfo) : BasicMessage(SocketEvents::UPDATE_CLIENTS)

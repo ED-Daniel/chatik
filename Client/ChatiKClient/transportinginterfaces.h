@@ -39,10 +39,11 @@ protected:
 
 class JoinInfo : public BasicMessage {
 public:
-    explicit JoinInfo(QString name);
+    explicit JoinInfo(QString name, ClientStatuses status);
     JoinInfo(QByteArray fromJson);
 
     QString getName() const;
+    ClientStatuses getStatus() const;
 };
 
 class ClientInfo : public BasicMessage {
