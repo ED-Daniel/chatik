@@ -2,6 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QJsonArray>
+#include <QJsonObject>
+
+#include "server.h"
+#include "transportinginterfaces.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -14,7 +19,10 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+public slots:
+    void setClients(const QJsonArray &info);
+    void handleConnect(const ClientInfo &info);
+    void handleDisconnect(const ClientInfo &info);
 private:
     Ui::MainWindow *ui;
 };

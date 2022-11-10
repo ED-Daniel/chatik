@@ -6,8 +6,8 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    Server::Instance().init(QHostAddress::LocalHost, 45678);
     MainWindow w;
     w.show();
-    Server server;
     return a.exec();
 }

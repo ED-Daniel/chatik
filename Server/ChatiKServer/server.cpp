@@ -1,13 +1,26 @@
 #include "server.h"
 
-Server::Server()
+void Server::init(QHostAddress ip, quint16 port)
 {
-    if (this->listen(QHostAddress::LocalHost, 45678)) {
+    if (this->listen(ip, port)) {
         qDebug() << "Socket started";
     }
     else {
         qDebug() << "SOCKET FAILED TO START";
     }
+
+    this->ip = ip.toString();
+    this->port = port;
+}
+
+QString Server::getIp()
+{
+    return ip;
+}
+
+quint16 Server::getPort()
+{
+    return port;
 }
 
 void Server::sendToClient(QString message)
@@ -44,9 +57,13 @@ void Server::deleteClientsInfo()
     for (const auto &client : clients) {
         qintptr desc = client->socketDescriptor();
         if (clientsInfo.count(desc)) {
-            ClientInfo *info = clientsInfo[desc];
+            ClientInfo *info = clientsInfo.take(desc);
             tempClients.insert(desc, ClientInfo(info->getName(), info->getIp(), info->getConnectedTime(), (ClientStatuses)info->getStatus()));
         }
+    }
+
+    for (auto const &desc : clientsInfo.keys()) {
+        emit clientDisconnected(*clientsInfo[desc]);
     }
 
     clientsInfo.clear();
@@ -90,15 +107,17 @@ void Server::slotReadyRead()
 
             JoinInfo * info = new JoinInfo(bytes);
             qDebug() << info->getName();
-            clientsInfo.insert(serverSocket->socketDescriptor(),
-                               new ClientInfo(
-                                   info->getName(),
-                                   serverSocket->peerAddress().toString(),
-                                   QDateTime::currentDateTime().toString(),
-                                   ClientStatuses::ONLINE
-                                ));
+            ClientInfo *newClient = new ClientInfo(
+                        info->getName(),
+                        serverSocket->peerAddress().toString(),
+                        QDateTime::currentDateTime().toString(),
+                        ClientStatuses::ONLINE
+                     );
+            clientsInfo.insert(serverSocket->socketDescriptor(), newClient);
+            emit clientConnected(*newClient);
             ClientsInfo *clientsToTransport = new ClientsInfo(clientsInfo.values());
             broadcast(clientsToTransport->getBytes());
+            emit clientsUpdated(clientsToTransport->getClients());
             delete clientsToTransport;
         }
 
@@ -125,6 +144,7 @@ void Server::handleDisconnect()
 
         ClientsInfo *clientsToTransport = new ClientsInfo(clientsInfo.values());
         broadcast(clientsToTransport->getBytes());
+        emit clientsUpdated(clientsToTransport->getClients());
         delete clientsToTransport;
     }
 }
