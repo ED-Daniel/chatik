@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     Client::Instance().init(this);
+    Vuex::Instance().init("/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/ChatiKClient/settings.ini");
     connect(&Client::Instance(), SIGNAL(newMessage(QString)), this, SLOT(createMessage(QString)));
     connect(&Client::Instance(), SIGNAL(newMessage(TextMessage)), this, SLOT(createMessage(TextMessage)));
     connect(&Client::Instance(), SIGNAL(clientInfoUpdated(QJsonArray)), this, SLOT(setClients(QJsonArray)));
@@ -25,7 +26,7 @@ void MainWindow::on_connectButton_clicked()
 
 void MainWindow::on_sendButton_clicked()
 {
-    TextMessage * message = new TextMessage(Vuex::Instance().username, ui->messageInput->text(), QDateTime::currentDateTime().toString(), Client::Instance().getIp());
+    TextMessage * message = new TextMessage(Vuex::Instance().getUsername(), ui->messageInput->text(), QDateTime::currentDateTime().toString(), Client::Instance().getIp());
     Client::Instance().sendTextMessage(*message);
     ui->messageInput->clear();
     delete message;
@@ -48,7 +49,33 @@ void MainWindow::setClients(const QJsonArray &info)
     ui->clientsList->clear();
     for (const auto client : info) {
         QJsonObject clientObject = client.toObject();
-        ui->clientsList->append(clientObject["name"].toString() + ": " + clientObject["ip"].toString() + "\n" + clientObject["connected_time"].toString() + "\n\n");
+
+        if (clientObject["name"].toString() == Vuex::Instance().getUsername() && clientObject["ip"].toString() == Client::Instance().getIp()) {
+            Vuex::Instance().connectedTime = clientObject["connected_time"].toString();
+        }
+
+        ClientStatuses status = (ClientStatuses) clientObject["status"].toInt();
+        QString statusStr = "";
+
+        switch (status) {
+        case ClientStatuses::ONLINE:
+            statusStr = "ONLINE";
+            break;
+         case ClientStatuses::AWAY:
+            statusStr = "AWAY";
+            break;
+         case ClientStatuses::DONT_DISTURB:
+            statusStr = "DO NOT DISTURB";
+            break;
+        default:
+            break;
+        }
+
+        ui->clientsList->append(
+                    clientObject["name"].toString() + ": " + clientObject["ip"].toString() +
+                    "\n" + clientObject["connected_time"].toString() +
+                    "\n" + statusStr +
+                    "\n\n");
     }
 }
 
@@ -60,8 +87,8 @@ void MainWindow::on_actionConnect_triggered()
 
 void MainWindow::connectToServer()
 {
-    Client::Instance().connectToServer(Vuex::Instance().serverIp, Vuex::Instance().port);
-    JoinInfo * info = new JoinInfo(Vuex::Instance().username);
+    Client::Instance().connectToServer(Vuex::Instance().getServerIp(), Vuex::Instance().getPort());
+    JoinInfo * info = new JoinInfo(Vuex::Instance().getUsername());
     Client::Instance().join(*info);
     delete info;
 }
@@ -126,5 +153,32 @@ void MainWindow::on_actionShow_triggered()
     dialog->show();
 
     connect(buttonClose, &QPushButton::clicked, dialog, &QDialog::close);
+}
+
+
+void MainWindow::on_actionOnline_triggered()
+{
+    Vuex::Instance().setStatus(ClientStatuses::ONLINE);
+    ClientInfo *info = new ClientInfo(Vuex::Instance().getUsername(), Client::Instance().getIp(), Vuex::Instance().connectedTime, Vuex::Instance().getStatus());
+    Client::Instance().sendClientInfo(*info);
+    delete info;
+}
+
+
+void MainWindow::on_actionAway_triggered()
+{
+    Vuex::Instance().setStatus(ClientStatuses::AWAY);
+    ClientInfo *info = new ClientInfo(Vuex::Instance().getUsername(), Client::Instance().getIp(), Vuex::Instance().connectedTime, Vuex::Instance().getStatus());
+    Client::Instance().sendClientInfo(*info);
+    delete info;
+}
+
+
+void MainWindow::on_actionDo_Not_Disturb_triggered()
+{
+    Vuex::Instance().setStatus(ClientStatuses::DONT_DISTURB);
+    ClientInfo *info = new ClientInfo(Vuex::Instance().getUsername(), Client::Instance().getIp(), Vuex::Instance().connectedTime, Vuex::Instance().getStatus());
+    Client::Instance().sendClientInfo(*info);
+    delete info;
 }
 

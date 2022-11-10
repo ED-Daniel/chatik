@@ -49,6 +49,12 @@ private slots:
 
     void on_actionShow_triggered();
 
+    void on_actionOnline_triggered();
+
+    void on_actionAway_triggered();
+
+    void on_actionDo_Not_Disturb_triggered();
+
 private:
     Ui::MainWindow *ui;
     void connectToServer();

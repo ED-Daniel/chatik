@@ -1,1 +1,60 @@
 #include "vuex.h"
+
+void Vuex::setServerIp(QString ip)
+{
+    QSettings settings(filename, QSettings::IniFormat);
+    this->serverIp = ip;
+    settings.setValue("ip", serverIp);
+}
+
+void Vuex::setPort(quint16 port)
+{
+    this->port = port;
+    QSettings settings(filename, QSettings::IniFormat);
+    settings.setValue("port", port);
+}
+
+void Vuex::setUsername(QString username)
+{
+    this->username = username;
+    QSettings settings(filename, QSettings::IniFormat);
+    settings.setValue("username", username);
+}
+
+void Vuex::setStatus(ClientStatuses status)
+{
+    this->status = status;
+    QSettings settings(filename, QSettings::IniFormat);
+    settings.setValue("status", (uint) status);
+}
+
+void Vuex::init(QString filename)
+{
+    QSettings settings(filename, QSettings::IniFormat);
+    this->serverIp = settings.value("ip").toString();
+    this->port = settings.value("port").toUInt();
+    this->username = settings.value("username").toString();
+    this->status = (ClientStatuses)settings.value("status").toUInt();
+
+    this->filename = filename;
+}
+
+QString Vuex::getServerIp()
+{
+    return serverIp;
+}
+
+quint16 Vuex::getPort()
+{
+    return port;
+}
+
+QString Vuex::getUsername()
+{
+    return username;
+}
+
+ClientStatuses Vuex::getStatus()
+{
+    return status;
+}

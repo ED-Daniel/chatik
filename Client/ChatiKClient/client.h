@@ -21,6 +21,7 @@ public:
     void sendTextMessage(const TextMessage &message);
     void join(const JoinInfo &info);
     void sendMessage(const BasicMessage &message);
+    void sendClientInfo(const ClientInfo &info);
     void disconnect();
     QString getIp();
     QVector<TextMessage*> getMessages() const;

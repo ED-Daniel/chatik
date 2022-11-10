@@ -79,7 +79,7 @@ QString JoinInfo::getName() const {
     return jsonObject["name"].toString();
 }
 
-ClientInfo::ClientInfo(QString name, QString ip, QString connectedTime, ClientStatuses status) : BasicMessage(SocketEvents::UPDATE_CLIENTS) {
+ClientInfo::ClientInfo(QString name, QString ip, QString connectedTime, ClientStatuses status) : BasicMessage(SocketEvents::UPDATE_CLIENT) {
     jsonObject.insert("name", name);
     jsonObject.insert("ip", ip);
     jsonObject.insert("connected_time", connectedTime);

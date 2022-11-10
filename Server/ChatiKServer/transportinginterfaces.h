@@ -13,6 +13,7 @@
 enum SocketEvents {
     JOIN,
     MESSAGE,
+    UPDATE_CLIENT,
     UPDATE_CLIENTS
 };
 

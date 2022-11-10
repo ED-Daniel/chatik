@@ -125,6 +125,15 @@ void Server::slotReadyRead()
             broadcast(bytes);
         }
 
+        if (message->getEvent() == SocketEvents::UPDATE_CLIENT) {
+            ClientInfo *info = new ClientInfo(bytes);
+            clientsInfo.insert(serverSocket->socketDescriptor(), info);
+            ClientsInfo *clientsToTransport = new ClientsInfo(clientsInfo.values());
+            broadcast(clientsToTransport->getBytes());
+            emit clientsUpdated(clientsToTransport->getClients());
+            delete clientsToTransport;
+        }
+
         delete message;
     } catch (const QException &exception) {
         qDebug() << "FAILED TO CERATE BASIC MESSAGE";

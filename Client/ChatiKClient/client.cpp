@@ -41,6 +41,11 @@ void Client::sendMessage(const BasicMessage &message)
     clientSocket->write(message.getBytes());
 }
 
+void Client::sendClientInfo(const ClientInfo &info)
+{
+    clientSocket->write(info.getBytes());
+}
+
 void Client::disconnect()
 {
     clientSocket->disconnect();

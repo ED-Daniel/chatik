@@ -6,7 +6,7 @@ UsernameEditDialog::UsernameEditDialog(QWidget *parent) :
     ui(new Ui::UsernameEditDialog)
 {
     ui->setupUi(this);
-    ui->usernameInput->setText(Vuex::Instance().username);
+    ui->usernameInput->setText(Vuex::Instance().getUsername());
 }
 
 UsernameEditDialog::~UsernameEditDialog()
@@ -16,6 +16,6 @@ UsernameEditDialog::~UsernameEditDialog()
 
 void UsernameEditDialog::on_buttonBox_accepted()
 {
-    Vuex::Instance().username = ui->usernameInput->text();
+    Vuex::Instance().setUsername(ui->usernameInput->text());
 }
 
