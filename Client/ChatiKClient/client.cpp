@@ -17,7 +17,7 @@ void Client::connectToServer(QString address, quint16 port)
     }
 }
 
-void Client::sendToServer(QString message)
+void Client::sendStringToServer(QString message)
 {
     transportingData.clear();
     QDataStream out(&transportingData, QIODevice::WriteOnly);
@@ -26,13 +26,36 @@ void Client::sendToServer(QString message)
     clientSocket->write(transportingData);
 }
 
+void Client::sendTextMessage(const TextMessage &message)
+{
+    clientSocket->write(message.getBytes());
+}
+
+void Client::join(const JoinInfo &info)
+{
+    clientSocket->write(info.getBytes());
+}
+
+void Client::sendMessage(const BasicMessage &message)
+{
+    clientSocket->write(message.getBytes());
+}
+
 void Client::slotReadyToRead()
 {
-    QDataStream in(clientSocket);
-    in.setVersion(QDataStream::Qt_6_2);
-    if (in.status() == QDataStream::Ok) {
-        QString str;
-        in >> str;
-        emit newMessage(str);
+    QByteArray bytes = clientSocket->readAll();
+    BasicMessage *message = new BasicMessage(bytes);
+
+    if (message->getEvent() == SocketEvents::MESSAGE) {
+        TextMessage *message = new TextMessage(bytes);
+        emit newMessage(*message);
     }
+
+    if (message->getEvent() == SocketEvents::UPDATE_CLIENTS) {
+        qDebug() << "UPDATED CLIENTS";
+        ClientsInfo *info = new ClientsInfo(bytes);
+        emit clientInfoUpdated(info->getClients());
+    }
+
+    delete message;
 }

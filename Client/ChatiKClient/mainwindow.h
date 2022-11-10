@@ -2,7 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include<QJsonArray>
+#include<QJsonObject>
+#include<QLabel>
 #include "client.h"
+#include "transportinginterfaces.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,6 +25,8 @@ private slots:
 
     void on_sendButton_clicked();
     void createMessage(QString message);
+    void createMessage(const TextMessage &message);
+    void setClients(const QJsonArray &info);
 
 private:
     Ui::MainWindow *ui;

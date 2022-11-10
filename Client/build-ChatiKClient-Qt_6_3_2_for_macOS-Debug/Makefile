@@ -54,11 +54,13 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../ChatiKClient/client.cpp \
 		../ChatiKClient/main.cpp \
-		../ChatiKClient/mainwindow.cpp moc_client.cpp \
+		../ChatiKClient/mainwindow.cpp \
+		../ChatiKClient/transportinginterfaces.cpp moc_client.cpp \
 		moc_mainwindow.cpp
 OBJECTS       = client.o \
 		main.o \
 		mainwindow.o \
+		transportinginterfaces.o \
 		moc_client.o \
 		moc_mainwindow.o
 DIST          = /Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/spec_pre.prf \
@@ -179,6 +181,7 @@ DIST          = /Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/spec_pr
 		/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/qt_config.prf \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/macx-clang/qmake.conf \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/spec_post.prf \
+		../ChatiKClient/.qmake.stash \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/exclusive_builds.prf \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/mac/sdk.prf \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/toolchain.prf \
@@ -208,9 +211,11 @@ DIST          = /Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/spec_pr
 		/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/yacc.prf \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/lex.prf \
 		../ChatiKClient/ChatiKClient.pro ../ChatiKClient/client.h \
-		../ChatiKClient/mainwindow.h ../ChatiKClient/client.cpp \
+		../ChatiKClient/mainwindow.h \
+		../ChatiKClient/transportinginterfaces.h ../ChatiKClient/client.cpp \
 		../ChatiKClient/main.cpp \
-		../ChatiKClient/mainwindow.cpp
+		../ChatiKClient/mainwindow.cpp \
+		../ChatiKClient/transportinginterfaces.cpp
 QMAKE_TARGET  = ChatiKClient
 DESTDIR       = 
 TARGET        = ChatiKClient.app/Contents/MacOS/ChatiKClient
@@ -219,7 +224,7 @@ TARGET        = ChatiKClient.app/Contents/MacOS/ChatiKClient
 EXPORT_QMAKE_MAC_SDK = macosx
 EXPORT_QMAKE_MAC_SDK_VERSION = 12.3
 EXPORT_QMAKE_XCODE_DEVELOPER_PATH = /Library/Developer/CommandLineTools
-EXPORT__QMAKE_STASH_ = 
+EXPORT__QMAKE_STASH_ = /Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/build-ChatiKClient-Qt_6_3_2_for_macOS-Debug/.qmake.stash
 EXPORT_VALID_ARCHS = x86_64 arm64
 EXPORT_DEFAULT_ARCHS = arm64
 EXPORT_ARCHS = $(filter $(EXPORT_VALID_ARCHS), $(if $(ARCHS), $(ARCHS), $(if $(EXPORT_DEFAULT_ARCHS), $(EXPORT_DEFAULT_ARCHS), $(EXPORT_VALID_ARCHS))))
@@ -353,6 +358,7 @@ Makefile: ../ChatiKClient/ChatiKClient.pro /Users/danielemelyanenko/Qt/6.3.2/mac
 		/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/qt_config.prf \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/macx-clang/qmake.conf \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/exclusive_builds.prf \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/mac/sdk.prf \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/toolchain.prf \
@@ -505,6 +511,7 @@ Makefile: ../ChatiKClient/ChatiKClient.pro /Users/danielemelyanenko/Qt/6.3.2/mac
 /Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/qt_config.prf:
 /Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/macx-clang/qmake.conf:
 /Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/exclusive_builds.prf:
 /Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/mac/sdk.prf:
 /Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/toolchain.prf:
@@ -567,8 +574,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../ChatiKClient/client.h ../ChatiKClient/mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../ChatiKClient/client.cpp ../ChatiKClient/main.cpp ../ChatiKClient/mainwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../ChatiKClient/client.h ../ChatiKClient/mainwindow.h ../ChatiKClient/transportinginterfaces.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../ChatiKClient/client.cpp ../ChatiKClient/main.cpp ../ChatiKClient/mainwindow.cpp ../ChatiKClient/transportinginterfaces.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../ChatiKClient/mainwindow.ui $(DISTDIR)/
 
 
@@ -579,6 +586,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r ChatiKClient.app
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -800,6 +808,12 @@ moc_client.cpp: ../ChatiKClient/client.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtcoreversion.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers/QTcpSocket \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers/qtcpsocket.h \
+		../ChatiKClient/transportinginterfaces.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QString \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonObject \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonParseError \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc
 	/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/macx-clang -I/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/ChatiKClient -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/danielemelyanenko/Qt/6.3.2/macos/lib ../ChatiKClient/client.h -o moc_client.cpp
 
@@ -1006,6 +1020,12 @@ moc_mainwindow.cpp: ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtcoreversion.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers/QTcpSocket \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers/qtcpsocket.h \
+		../ChatiKClient/transportinginterfaces.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QString \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonObject \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonParseError \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc
 	/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/macx-clang -I/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/ChatiKClient -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/danielemelyanenko/Qt/6.3.2/macos/lib ../ChatiKClient/mainwindow.h -o moc_mainwindow.cpp
 
@@ -1231,7 +1251,13 @@ client.o: ../ChatiKClient/client.cpp ../ChatiKClient/client.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qxmlstream.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtcoreversion.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers/QTcpSocket \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers/qtcpsocket.h
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers/qtcpsocket.h \
+		../ChatiKClient/transportinginterfaces.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QString \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonObject \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonParseError
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o client.o ../ChatiKClient/client.cpp
 
 main.o: ../ChatiKClient/main.cpp ../ChatiKClient/mainwindow.h \
@@ -1437,6 +1463,12 @@ main.o: ../ChatiKClient/main.cpp ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtcoreversion.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers/QTcpSocket \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers/qtcpsocket.h \
+		../ChatiKClient/transportinginterfaces.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QString \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonObject \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonParseError \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QApplication \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../ChatiKClient/main.cpp
@@ -1644,8 +1676,26 @@ mainwindow.o: ../ChatiKClient/mainwindow.cpp ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtcoreversion.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers/QTcpSocket \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers/qtcpsocket.h \
+		../ChatiKClient/transportinginterfaces.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QString \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonObject \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonParseError \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../ChatiKClient/mainwindow.cpp
+
+transportinginterfaces.o: ../ChatiKClient/transportinginterfaces.cpp ../ChatiKClient/transportinginterfaces.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QString \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstring.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsondocument.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonObject \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearray.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonParseError
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o transportinginterfaces.o ../ChatiKClient/transportinginterfaces.cpp
 
 moc_client.o: moc_client.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_client.o moc_client.cpp

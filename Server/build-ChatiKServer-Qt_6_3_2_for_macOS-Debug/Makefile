@@ -54,11 +54,13 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../ChatiKServer/main.cpp \
 		../ChatiKServer/mainwindow.cpp \
-		../ChatiKServer/server.cpp moc_mainwindow.cpp \
+		../ChatiKServer/server.cpp \
+		../ChatiKServer/transportinginterfaces.cpp moc_mainwindow.cpp \
 		moc_server.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		server.o \
+		transportinginterfaces.o \
 		moc_mainwindow.o \
 		moc_server.o
 DIST          = /Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/spec_pre.prf \
@@ -209,9 +211,11 @@ DIST          = /Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/spec_pr
 		/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/yacc.prf \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/lex.prf \
 		../ChatiKServer/ChatiKServer.pro ../ChatiKServer/mainwindow.h \
-		../ChatiKServer/server.h ../ChatiKServer/main.cpp \
+		../ChatiKServer/server.h \
+		../ChatiKServer/transportinginterfaces.h ../ChatiKServer/main.cpp \
 		../ChatiKServer/mainwindow.cpp \
-		../ChatiKServer/server.cpp
+		../ChatiKServer/server.cpp \
+		../ChatiKServer/transportinginterfaces.cpp
 QMAKE_TARGET  = ChatiKServer
 DESTDIR       = 
 TARGET        = ChatiKServer.app/Contents/MacOS/ChatiKServer
@@ -570,8 +574,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../ChatiKServer/mainwindow.h ../ChatiKServer/server.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../ChatiKServer/main.cpp ../ChatiKServer/mainwindow.cpp ../ChatiKServer/server.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../ChatiKServer/mainwindow.h ../ChatiKServer/server.h ../ChatiKServer/transportinginterfaces.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../ChatiKServer/main.cpp ../ChatiKServer/mainwindow.cpp ../ChatiKServer/server.cpp ../ChatiKServer/transportinginterfaces.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../ChatiKServer/mainwindow.ui $(DISTDIR)/
 
 
@@ -617,6 +621,16 @@ moc_server.cpp: ../ChatiKServer/server.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers/qtcpsocket.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QVector \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qvector.h \
+		../ChatiKServer/transportinginterfaces.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QString \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstring.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsondocument.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonObject \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearray.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonParseError \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc
 	/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/macx-clang -I/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Server/ChatiKServer -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/danielemelyanenko/Qt/6.3.2/macos/lib ../ChatiKServer/server.h -o moc_server.cpp
 
@@ -653,6 +667,16 @@ main.o: ../ChatiKServer/main.cpp ../ChatiKServer/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers/qtcpsocket.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QVector \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qvector.h \
+		../ChatiKServer/transportinginterfaces.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QString \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstring.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsondocument.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonObject \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearray.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonParseError \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QApplication \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../ChatiKServer/main.cpp
@@ -669,8 +693,30 @@ server.o: ../ChatiKServer/server.cpp ../ChatiKServer/server.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers/QTcpSocket \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers/qtcpsocket.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QVector \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qvector.h
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qvector.h \
+		../ChatiKServer/transportinginterfaces.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QString \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstring.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsondocument.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonObject \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearray.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonParseError
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o server.o ../ChatiKServer/server.cpp
+
+transportinginterfaces.o: ../ChatiKServer/transportinginterfaces.cpp ../ChatiKServer/transportinginterfaces.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QString \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstring.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsondocument.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonObject \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearray.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonParseError
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o transportinginterfaces.o ../ChatiKServer/transportinginterfaces.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

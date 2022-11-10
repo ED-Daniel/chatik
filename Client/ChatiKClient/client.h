@@ -3,6 +3,9 @@
 
 #include <QtCore>
 #include <QTcpSocket>
+#include <QVector>
+#include <QJsonArray>
+#include"transportinginterfaces.h"
 
 class Client : public QObject
 {
@@ -14,10 +17,15 @@ public:
     }
     void init(QObject * parent = 0);
     void connectToServer(QString address, quint16 port);
-    void sendToServer(QString message);
+    void sendStringToServer(QString message);
+    void sendTextMessage(const TextMessage &message);
+    void join(const JoinInfo &info);
+    void sendMessage(const BasicMessage &message);
 
 signals:
     void newMessage(QString str);
+    void newMessage(const TextMessage &message);
+    void clientInfoUpdated(const QJsonArray &info);
 
 private:
     Client() {}

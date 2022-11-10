@@ -12,11 +12,13 @@ CONFIG += c++17
 SOURCES += \
     client.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    transportinginterfaces.cpp
 
 HEADERS += \
     client.h \
-    mainwindow.h
+    mainwindow.h \
+    transportinginterfaces.h
 
 FORMS += \
     mainwindow.ui
