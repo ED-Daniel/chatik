@@ -60,15 +60,16 @@
      <string>Connect</string>
     </property>
    </widget>
-   <widget class="QTextBrowser" name="clientsList">
+   <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
       <x>630</x>
       <y>30</y>
-      <width>161</width>
+      <width>160</width>
       <height>461</height>
      </rect>
     </property>
+    <layout class="QVBoxLayout" name="clientsListHolder"/>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

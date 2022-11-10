@@ -57,11 +57,13 @@ SOURCES       = ../ChatiKClient/client.cpp \
 		../ChatiKClient/mainwindow.cpp \
 		../ChatiKClient/serverconfigdialog.cpp \
 		../ChatiKClient/transportinginterfaces.cpp \
+		../ChatiKClient/userelements.cpp \
 		../ChatiKClient/usernameeditdialog.cpp \
 		../ChatiKClient/vuex.cpp \
 		../ChatiKClient/xmlsavedialog.cpp moc_client.cpp \
 		moc_mainwindow.cpp \
 		moc_serverconfigdialog.cpp \
+		moc_userelements.cpp \
 		moc_usernameeditdialog.cpp \
 		moc_xmlsavedialog.cpp
 OBJECTS       = client.o \
@@ -69,12 +71,14 @@ OBJECTS       = client.o \
 		mainwindow.o \
 		serverconfigdialog.o \
 		transportinginterfaces.o \
+		userelements.o \
 		usernameeditdialog.o \
 		vuex.o \
 		xmlsavedialog.o \
 		moc_client.o \
 		moc_mainwindow.o \
 		moc_serverconfigdialog.o \
+		moc_userelements.o \
 		moc_usernameeditdialog.o \
 		moc_xmlsavedialog.o
 DIST          = /Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/spec_pre.prf \
@@ -233,6 +237,7 @@ DIST          = /Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/spec_pr
 		../ChatiKClient/mainwindow.h \
 		../ChatiKClient/serverconfigdialog.h \
 		../ChatiKClient/transportinginterfaces.h \
+		../ChatiKClient/userelements.h \
 		../ChatiKClient/usernameeditdialog.h \
 		../ChatiKClient/vuex.h \
 		../ChatiKClient/xmlsavedialog.h ../ChatiKClient/client.cpp \
@@ -240,6 +245,7 @@ DIST          = /Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/spec_pr
 		../ChatiKClient/mainwindow.cpp \
 		../ChatiKClient/serverconfigdialog.cpp \
 		../ChatiKClient/transportinginterfaces.cpp \
+		../ChatiKClient/userelements.cpp \
 		../ChatiKClient/usernameeditdialog.cpp \
 		../ChatiKClient/vuex.cpp \
 		../ChatiKClient/xmlsavedialog.cpp
@@ -615,8 +621,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../ChatiKClient/client.h ../ChatiKClient/mainwindow.h ../ChatiKClient/serverconfigdialog.h ../ChatiKClient/transportinginterfaces.h ../ChatiKClient/usernameeditdialog.h ../ChatiKClient/vuex.h ../ChatiKClient/xmlsavedialog.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../ChatiKClient/client.cpp ../ChatiKClient/main.cpp ../ChatiKClient/mainwindow.cpp ../ChatiKClient/serverconfigdialog.cpp ../ChatiKClient/transportinginterfaces.cpp ../ChatiKClient/usernameeditdialog.cpp ../ChatiKClient/vuex.cpp ../ChatiKClient/xmlsavedialog.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../ChatiKClient/client.h ../ChatiKClient/mainwindow.h ../ChatiKClient/serverconfigdialog.h ../ChatiKClient/transportinginterfaces.h ../ChatiKClient/userelements.h ../ChatiKClient/usernameeditdialog.h ../ChatiKClient/vuex.h ../ChatiKClient/xmlsavedialog.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../ChatiKClient/client.cpp ../ChatiKClient/main.cpp ../ChatiKClient/mainwindow.cpp ../ChatiKClient/serverconfigdialog.cpp ../ChatiKClient/transportinginterfaces.cpp ../ChatiKClient/userelements.cpp ../ChatiKClient/usernameeditdialog.cpp ../ChatiKClient/vuex.cpp ../ChatiKClient/xmlsavedialog.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../ChatiKClient/mainwindow.ui ../ChatiKClient/serverconfigdialog.ui ../ChatiKClient/usernameeditdialog.ui ../ChatiKClient/xmlsavedialog.ui $(DISTDIR)/
 
 
@@ -646,9 +652,9 @@ benchmark: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_client.cpp moc_mainwindow.cpp moc_serverconfigdialog.cpp moc_usernameeditdialog.cpp moc_xmlsavedialog.cpp
+compiler_moc_header_make_all: moc_client.cpp moc_mainwindow.cpp moc_serverconfigdialog.cpp moc_userelements.cpp moc_usernameeditdialog.cpp moc_xmlsavedialog.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_client.cpp moc_mainwindow.cpp moc_serverconfigdialog.cpp moc_usernameeditdialog.cpp moc_xmlsavedialog.cpp
+	-$(DEL_FILE) moc_client.cpp moc_mainwindow.cpp moc_serverconfigdialog.cpp moc_userelements.cpp moc_usernameeditdialog.cpp moc_xmlsavedialog.cpp
 moc_client.cpp: ../ChatiKClient/client.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QtCore \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qglobal.h \
@@ -873,8 +879,10 @@ moc_mainwindow.cpp: ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qdatetime.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QBoxLayout \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/QSoundEffect \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/qsoundeffect.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/QMediaPlayer \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/QAudioOutput \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/qaudiooutput.h \
 		../ChatiKClient/client.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QtCore \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qglobal.h \
@@ -1089,6 +1097,11 @@ moc_mainwindow.cpp: ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers/qdom.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QFileDialog \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		../ChatiKClient/userelements.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QMouseEvent \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qevent.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc
 	/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/macx-clang -I/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/ChatiKClient -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/danielemelyanenko/Qt/6.3.2/macos/lib ../ChatiKClient/mainwindow.h -o moc_mainwindow.cpp
 
@@ -1114,6 +1127,18 @@ moc_serverconfigdialog.cpp: ../ChatiKClient/serverconfigdialog.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qvector.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc
 	/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/macx-clang -I/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/ChatiKClient -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/danielemelyanenko/Qt/6.3.2/macos/lib ../ChatiKClient/serverconfigdialog.h -o moc_serverconfigdialog.cpp
+
+moc_userelements.cpp: ../ChatiKClient/userelements.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QBoxLayout \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QLabel \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QMouseEvent \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qevent.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc
+	/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/macx-clang -I/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/ChatiKClient -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/danielemelyanenko/Qt/6.3.2/macos/lib ../ChatiKClient/userelements.h -o moc_userelements.cpp
 
 moc_usernameeditdialog.cpp: ../ChatiKClient/usernameeditdialog.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QDialog \
@@ -1614,8 +1639,10 @@ main.o: ../ChatiKClient/main.cpp ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qdatetime.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QBoxLayout \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/QSoundEffect \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/qsoundeffect.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/QMediaPlayer \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/QAudioOutput \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/qaudiooutput.h \
 		../ChatiKClient/client.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QtCore \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qglobal.h \
@@ -1830,6 +1857,11 @@ main.o: ../ChatiKClient/main.cpp ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers/qdom.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QFileDialog \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		../ChatiKClient/userelements.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QMouseEvent \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qevent.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QApplication \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../ChatiKClient/main.cpp
@@ -1847,8 +1879,10 @@ mainwindow.o: ../ChatiKClient/mainwindow.cpp ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qdatetime.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QBoxLayout \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/QSoundEffect \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/qsoundeffect.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/QMediaPlayer \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/QAudioOutput \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/qaudiooutput.h \
 		../ChatiKClient/client.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QtCore \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qglobal.h \
@@ -2063,6 +2097,11 @@ mainwindow.o: ../ChatiKClient/mainwindow.cpp ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers/qdom.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QFileDialog \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		../ChatiKClient/userelements.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QMouseEvent \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qevent.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../ChatiKClient/mainwindow.cpp
 
@@ -2104,6 +2143,17 @@ transportinginterfaces.o: ../ChatiKClient/transportinginterfaces.cpp ../ChatiKCl
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QVector \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qvector.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o transportinginterfaces.o ../ChatiKClient/transportinginterfaces.cpp
+
+userelements.o: ../ChatiKClient/userelements.cpp ../ChatiKClient/userelements.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QBoxLayout \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QLabel \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QMouseEvent \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qevent.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o userelements.o ../ChatiKClient/userelements.cpp
 
 usernameeditdialog.o: ../ChatiKClient/usernameeditdialog.cpp ../ChatiKClient/usernameeditdialog.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QDialog \
@@ -2373,6 +2423,9 @@ moc_mainwindow.o: moc_mainwindow.cpp
 
 moc_serverconfigdialog.o: moc_serverconfigdialog.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_serverconfigdialog.o moc_serverconfigdialog.cpp
+
+moc_userelements.o: moc_userelements.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_userelements.o moc_userelements.cpp
 
 moc_usernameeditdialog.o: moc_usernameeditdialog.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_usernameeditdialog.o moc_usernameeditdialog.cpp

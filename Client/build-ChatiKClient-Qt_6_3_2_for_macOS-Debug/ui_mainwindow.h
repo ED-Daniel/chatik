@@ -19,6 +19,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextBrowser>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -41,7 +42,8 @@ public:
     QPushButton *sendButton;
     QTextBrowser *messagesArea;
     QPushButton *connectButton;
-    QTextBrowser *clientsList;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *clientsListHolder;
     QMenuBar *menubar;
     QMenu *menuFile;
     QMenu *menuSettings;
@@ -88,9 +90,12 @@ public:
         connectButton = new QPushButton(centralwidget);
         connectButton->setObjectName(QString::fromUtf8("connectButton"));
         connectButton->setGeometry(QRect(630, 500, 161, 41));
-        clientsList = new QTextBrowser(centralwidget);
-        clientsList->setObjectName(QString::fromUtf8("clientsList"));
-        clientsList->setGeometry(QRect(630, 30, 161, 461));
+        verticalLayoutWidget = new QWidget(centralwidget);
+        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(630, 30, 160, 461));
+        clientsListHolder = new QVBoxLayout(verticalLayoutWidget);
+        clientsListHolder->setObjectName(QString::fromUtf8("clientsListHolder"));
+        clientsListHolder->setContentsMargins(0, 0, 0, 0);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));

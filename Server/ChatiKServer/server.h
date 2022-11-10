@@ -24,6 +24,7 @@ public:
     void init(QHostAddress ip, quint16 port);
     QString getIp();
     quint16 getPort();
+    uint getClientsCount();
 
 private:
     Server() {}

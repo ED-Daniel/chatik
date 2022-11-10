@@ -9,6 +9,7 @@
 #include <QBoxLayout>
 #include <QMediaPlayer>
 #include <QAudioOutput>
+#include <QVBoxLayout>
 
 #include "client.h"
 #include "vuex.h"
@@ -16,6 +17,7 @@
 #include "usernameeditdialog.h"
 #include "serverconfigdialog.h"
 #include "xmlsavedialog.h"
+#include "userelements.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

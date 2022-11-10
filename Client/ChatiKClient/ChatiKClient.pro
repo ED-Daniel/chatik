@@ -17,6 +17,7 @@ SOURCES += \
     mainwindow.cpp \
     serverconfigdialog.cpp \
     transportinginterfaces.cpp \
+    userelements.cpp \
     usernameeditdialog.cpp \
     vuex.cpp \
     xmlsavedialog.cpp
@@ -26,6 +27,7 @@ HEADERS += \
     mainwindow.h \
     serverconfigdialog.h \
     transportinginterfaces.h \
+    userelements.h \
     usernameeditdialog.h \
     vuex.h \
     xmlsavedialog.h

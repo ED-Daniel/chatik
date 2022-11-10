@@ -55,7 +55,15 @@ void MainWindow::createMessage(const TextMessage &message)
 void MainWindow::setClients(const QJsonArray &info)
 {
     qDebug() << "SET CLIENTS TRIGGERED";
-    ui->clientsList->clear();
+    //ui->clientsListHolder->children().toList()[0]->deleteLater();
+
+    QLayoutItem* item;
+        while ( ( item = ui->clientsListHolder->takeAt( 0 ) ) != NULL )
+        {
+            delete item->widget();
+            delete item;
+        }
+
     for (const auto client : info) {
         QJsonObject clientObject = client.toObject();
 
@@ -79,12 +87,11 @@ void MainWindow::setClients(const QJsonArray &info)
         default:
             break;
         }
+        UserElements *element = new UserElements(this, clientObject["name"].toString());
 
-        ui->clientsList->append(
-                    clientObject["name"].toString() + ": " + clientObject["ip"].toString() +
-                    "\n" + clientObject["connected_time"].toString() +
-                    "\n" + statusStr +
-                    "\n\n");
+        element->setClientInfo(new ClientInfo(clientObject));
+
+        ui->clientsListHolder->addWidget(element);
     }
 }
 
@@ -101,7 +108,6 @@ void MainWindow::connectToServer()
     Client::Instance().join(*info);
     delete info;
 }
-
 
 void MainWindow::on_actionDisconnect_triggered()
 {

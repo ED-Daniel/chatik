@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->serverLabel->setText(Server::Instance().getIp() + "\t" + QString::number(Server::Instance().getPort()));
+    ui->clientsCount->setText(QString::number(Server::Instance().getClientsCount()));
 
     connect(&Server::Instance(), SIGNAL(clientsUpdated(QJsonArray)), this, SLOT(setClients(QJsonArray)));
     connect(&Server::Instance(), SIGNAL(clientConnected(ClientInfo)), this, SLOT(handleConnect(ClientInfo)));
@@ -24,17 +25,20 @@ void MainWindow::setClients(const QJsonArray &info) {
         QJsonObject clientObject = client.toObject();
         ui->clinetsList->append(clientObject["name"].toString() + ": " + clientObject["ip"].toString() + "\n" + clientObject["connected_time"].toString() + "\n\n");
     }
+    ui->clientsCount->setText(QString::number(Server::Instance().getClientsCount()));
 }
 
 void MainWindow::handleConnect(const ClientInfo &info)
 {
     ui->console->append(info.getConnectedTime());
     ui->console->append(info.getName() + "-" + info.getIp() + ": " + "connected");
+    ui->clientsCount->setText(QString::number(Server::Instance().getClientsCount()));
 }
 
 void MainWindow::handleDisconnect(const ClientInfo &info)
 {
     ui->console->append(info.getConnectedTime());
     ui->console->append(info.getName() + "-" + info.getIp() + ": " + "disconnected");
+    ui->clientsCount->setText(QString::number(Server::Instance().getClientsCount()));
 }
 

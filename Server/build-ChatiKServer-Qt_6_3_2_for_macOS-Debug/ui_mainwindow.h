@@ -27,6 +27,7 @@ public:
     QTextBrowser *console;
     QLabel *serverLabel;
     QTextBrowser *clinetsList;
+    QLabel *clientsCount;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -42,11 +43,15 @@ public:
         console->setGeometry(QRect(12, 60, 641, 441));
         serverLabel = new QLabel(centralwidget);
         serverLabel->setObjectName(QString::fromUtf8("serverLabel"));
-        serverLabel->setGeometry(QRect(12, 12, 781, 41));
+        serverLabel->setGeometry(QRect(12, 12, 641, 41));
         serverLabel->setAlignment(Qt::AlignCenter);
         clinetsList = new QTextBrowser(centralwidget);
         clinetsList->setObjectName(QString::fromUtf8("clinetsList"));
         clinetsList->setGeometry(QRect(670, 60, 121, 441));
+        clientsCount = new QLabel(centralwidget);
+        clientsCount->setObjectName(QString::fromUtf8("clientsCount"));
+        clientsCount->setGeometry(QRect(677, 10, 101, 41));
+        clientsCount->setAlignment(Qt::AlignCenter);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -65,6 +70,7 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         serverLabel->setText(QString());
+        clientsCount->setText(QString());
     } // retranslateUi
 
 };

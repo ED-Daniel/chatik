@@ -23,6 +23,11 @@ quint16 Server::getPort()
     return port;
 }
 
+uint Server::getClientsCount()
+{
+    return clients.count();
+}
+
 void Server::sendToClient(QString message)
 {
     transportingData.clear();
