@@ -21,7 +21,9 @@ public:
     void sendTextMessage(const TextMessage &message);
     void join(const JoinInfo &info);
     void sendMessage(const BasicMessage &message);
-
+    void disconnect();
+    QString getIp();
+    QVector<TextMessage*> getMessages() const;
 signals:
     void newMessage(QString str);
     void newMessage(const TextMessage &message);
@@ -35,6 +37,7 @@ private:
 
     QTcpSocket * clientSocket;
     QByteArray transportingData;
+    QVector<TextMessage*> messages = QVector<TextMessage*>();
 private slots:
     void slotReadyToRead();
 };

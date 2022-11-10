@@ -1,5 +1,6 @@
 QT       += core gui
 QT       += network
+QT       += xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -13,15 +14,26 @@ SOURCES += \
     client.cpp \
     main.cpp \
     mainwindow.cpp \
-    transportinginterfaces.cpp
+    serverconfigdialog.cpp \
+    transportinginterfaces.cpp \
+    usernameeditdialog.cpp \
+    vuex.cpp \
+    xmlsavedialog.cpp
 
 HEADERS += \
     client.h \
     mainwindow.h \
-    transportinginterfaces.h
+    serverconfigdialog.h \
+    transportinginterfaces.h \
+    usernameeditdialog.h \
+    vuex.h \
+    xmlsavedialog.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    serverconfigdialog.ui \
+    usernameeditdialog.ui \
+    xmlsavedialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

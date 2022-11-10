@@ -41,6 +41,21 @@ void Client::sendMessage(const BasicMessage &message)
     clientSocket->write(message.getBytes());
 }
 
+void Client::disconnect()
+{
+    clientSocket->disconnect();
+}
+
+QString Client::getIp()
+{
+    return clientSocket->peerAddress().toString();
+}
+
+QVector<TextMessage *> Client::getMessages() const
+{
+    return messages;
+}
+
 void Client::slotReadyToRead()
 {
     QByteArray bytes = clientSocket->readAll();
@@ -48,6 +63,7 @@ void Client::slotReadyToRead()
 
     if (message->getEvent() == SocketEvents::MESSAGE) {
         TextMessage *message = new TextMessage(bytes);
+        messages.push_back(message);
         emit newMessage(*message);
     }
 

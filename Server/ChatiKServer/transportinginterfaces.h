@@ -22,8 +22,6 @@ enum ClientStatuses {
     DONT_DISTURB
 };
 
-std::string unixTimeToHumanReadable(quint64 seconds);
-
 class BasicMessage {
 public:
     BasicMessage(SocketEvents event);

@@ -19,16 +19,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_connectButton_clicked()
 {
-    Client::Instance().connectToServer("127.0.0.1", 45678);
-    JoinInfo * info = new JoinInfo((QString)"edaniel");
-    Client::Instance().join(*info);
-    delete info;
+    connectToServer();
 }
 
 
 void MainWindow::on_sendButton_clicked()
 {
-    TextMessage * message = new TextMessage("edaniel", ui->messageInput->text());
+    TextMessage * message = new TextMessage(Vuex::Instance().username, ui->messageInput->text(), QDateTime::currentDateTime().toString(), Client::Instance().getIp());
     Client::Instance().sendTextMessage(*message);
     ui->messageInput->clear();
     delete message;
@@ -53,5 +50,52 @@ void MainWindow::setClients(const QJsonArray &info)
         QJsonObject clientObject = client.toObject();
         ui->clientsList->append(clientObject["name"].toString() + ": " + clientObject["ip"].toString() + "\n" + clientObject["connected_time"].toString() + "\n\n");
     }
+}
+
+
+void MainWindow::on_actionConnect_triggered()
+{
+    connectToServer();
+}
+
+void MainWindow::connectToServer()
+{
+    Client::Instance().connectToServer(Vuex::Instance().serverIp, Vuex::Instance().port);
+    JoinInfo * info = new JoinInfo(Vuex::Instance().username);
+    Client::Instance().join(*info);
+    delete info;
+}
+
+
+void MainWindow::on_actionDisconnect_triggered()
+{
+    Client::Instance().disconnect();
+}
+
+
+void MainWindow::on_actionExit_triggered()
+{
+    QApplication::quit();
+}
+
+
+void MainWindow::on_actionServer_triggered()
+{
+    ServerConfigDialog * serverConfigDialog = new ServerConfigDialog(this);
+    serverConfigDialog->show();
+}
+
+
+void MainWindow::on_actionUsername_triggered()
+{
+    UsernameEditDialog * usernameEditDialog = new UsernameEditDialog(this);
+    usernameEditDialog->show();
+}
+
+
+void MainWindow::on_actionSave_History_triggered()
+{
+    XmlSaveDialog * saveDialog = new XmlSaveDialog(this);
+    saveDialog->show();
 }
 

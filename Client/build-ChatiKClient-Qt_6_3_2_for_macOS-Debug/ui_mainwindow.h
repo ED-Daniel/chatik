@@ -10,9 +10,11 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
@@ -24,6 +26,15 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionConnect;
+    QAction *actionDisconnect;
+    QAction *actionSave_History;
+    QAction *actionExit;
+    QAction *actionServer;
+    QAction *actionUsername;
+    QAction *actionOnline;
+    QAction *actionAway;
+    QAction *actionDo_Not_Disturb;
     QWidget *centralwidget;
     QLineEdit *messageInput;
     QPushButton *sendButton;
@@ -31,6 +42,10 @@ public:
     QPushButton *connectButton;
     QTextBrowser *clientsList;
     QMenuBar *menubar;
+    QMenu *menuFile;
+    QMenu *menuSettings;
+    QMenu *menuStatus;
+    QMenu *menuAbout;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -38,6 +53,24 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(800, 600);
+        actionConnect = new QAction(MainWindow);
+        actionConnect->setObjectName(QString::fromUtf8("actionConnect"));
+        actionDisconnect = new QAction(MainWindow);
+        actionDisconnect->setObjectName(QString::fromUtf8("actionDisconnect"));
+        actionSave_History = new QAction(MainWindow);
+        actionSave_History->setObjectName(QString::fromUtf8("actionSave_History"));
+        actionExit = new QAction(MainWindow);
+        actionExit->setObjectName(QString::fromUtf8("actionExit"));
+        actionServer = new QAction(MainWindow);
+        actionServer->setObjectName(QString::fromUtf8("actionServer"));
+        actionUsername = new QAction(MainWindow);
+        actionUsername->setObjectName(QString::fromUtf8("actionUsername"));
+        actionOnline = new QAction(MainWindow);
+        actionOnline->setObjectName(QString::fromUtf8("actionOnline"));
+        actionAway = new QAction(MainWindow);
+        actionAway->setObjectName(QString::fromUtf8("actionAway"));
+        actionDo_Not_Disturb = new QAction(MainWindow);
+        actionDo_Not_Disturb->setObjectName(QString::fromUtf8("actionDo_Not_Disturb"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         messageInput = new QLineEdit(centralwidget);
@@ -59,10 +92,32 @@ public:
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
         menubar->setGeometry(QRect(0, 0, 800, 22));
+        menuFile = new QMenu(menubar);
+        menuFile->setObjectName(QString::fromUtf8("menuFile"));
+        menuSettings = new QMenu(menubar);
+        menuSettings->setObjectName(QString::fromUtf8("menuSettings"));
+        menuStatus = new QMenu(menuSettings);
+        menuStatus->setObjectName(QString::fromUtf8("menuStatus"));
+        menuAbout = new QMenu(menubar);
+        menuAbout->setObjectName(QString::fromUtf8("menuAbout"));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         MainWindow->setStatusBar(statusbar);
+
+        menubar->addAction(menuFile->menuAction());
+        menubar->addAction(menuSettings->menuAction());
+        menubar->addAction(menuAbout->menuAction());
+        menuFile->addAction(actionConnect);
+        menuFile->addAction(actionDisconnect);
+        menuFile->addAction(actionSave_History);
+        menuFile->addAction(actionExit);
+        menuSettings->addAction(actionServer);
+        menuSettings->addAction(actionUsername);
+        menuSettings->addAction(menuStatus->menuAction());
+        menuStatus->addAction(actionOnline);
+        menuStatus->addAction(actionAway);
+        menuStatus->addAction(actionDo_Not_Disturb);
 
         retranslateUi(MainWindow);
 
@@ -72,8 +127,21 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        actionConnect->setText(QCoreApplication::translate("MainWindow", "Connect", nullptr));
+        actionDisconnect->setText(QCoreApplication::translate("MainWindow", "Disconnect", nullptr));
+        actionSave_History->setText(QCoreApplication::translate("MainWindow", "Save History", nullptr));
+        actionExit->setText(QCoreApplication::translate("MainWindow", "Exit", nullptr));
+        actionServer->setText(QCoreApplication::translate("MainWindow", "Server", nullptr));
+        actionUsername->setText(QCoreApplication::translate("MainWindow", "Username", nullptr));
+        actionOnline->setText(QCoreApplication::translate("MainWindow", "Online", nullptr));
+        actionAway->setText(QCoreApplication::translate("MainWindow", "Away", nullptr));
+        actionDo_Not_Disturb->setText(QCoreApplication::translate("MainWindow", "Do Not Disturb", nullptr));
         sendButton->setText(QCoreApplication::translate("MainWindow", "Send", nullptr));
         connectButton->setText(QCoreApplication::translate("MainWindow", "Connect", nullptr));
+        menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
+        menuSettings->setTitle(QCoreApplication::translate("MainWindow", "Settings", nullptr));
+        menuStatus->setTitle(QCoreApplication::translate("MainWindow", "Status", nullptr));
+        menuAbout->setTitle(QCoreApplication::translate("MainWindow", "About", nullptr));
     } // retranslateUi
 
 };

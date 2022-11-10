@@ -22,8 +22,6 @@ enum ClientStatuses {
     DONT_DISTURB
 };
 
-std::string unixTimeToHumanReadable(quint64 seconds);
-
 class BasicMessage {
 public:
     BasicMessage(SocketEvents event);
@@ -38,15 +36,6 @@ protected:
     QJsonObject jsonObject;
 };
 
-class TextMessage : public BasicMessage {
-public:
-    TextMessage(QString sender, QString message);
-    TextMessage(QByteArray fromJson);
-
-    QString getText() const;
-    QString getSender() const;
-};
-
 class JoinInfo : public BasicMessage {
 public:
     explicit JoinInfo(QString name);
@@ -57,7 +46,7 @@ public:
 
 class ClientInfo : public BasicMessage {
 public:
-    ClientInfo(QString name, QString ip, quint64 connectedTime, ClientStatuses status);
+    ClientInfo(QString name, QString ip, QString connectedTime, ClientStatuses status);
     ClientInfo(QByteArray fromJson);
     ClientInfo(QJsonObject fromObject);
 
@@ -73,6 +62,17 @@ public:
     ClientsInfo(QByteArray fromJson);
 
     QJsonArray getClients() const;
+};
+
+class TextMessage : public BasicMessage {
+public:
+    TextMessage(QString sender, QString message, QString time, QString ip);
+    TextMessage(QByteArray fromJson);
+
+    QString getText() const;
+    QString getSender() const;
+    QString getTime() const;
+    QString getIp() const;
 };
 
 #endif // TRANSPORTINGINTERFACES_H

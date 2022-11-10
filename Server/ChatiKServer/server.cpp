@@ -94,7 +94,7 @@ void Server::slotReadyRead()
                                new ClientInfo(
                                    info->getName(),
                                    serverSocket->peerAddress().toString(),
-                                   QString::fromStdString(unixTimeToHumanReadable(QDateTime::currentMSecsSinceEpoch())),
+                                   QDateTime::currentDateTime().toString(),
                                    ClientStatuses::ONLINE
                                 ));
             ClientsInfo *clientsToTransport = new ClientsInfo(clientsInfo.values());

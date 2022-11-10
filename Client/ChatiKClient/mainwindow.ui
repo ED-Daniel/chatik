@@ -80,8 +80,86 @@
      <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionConnect"/>
+    <addaction name="actionDisconnect"/>
+    <addaction name="actionSave_History"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>Settings</string>
+    </property>
+    <widget class="QMenu" name="menuStatus">
+     <property name="title">
+      <string>Status</string>
+     </property>
+     <addaction name="actionOnline"/>
+     <addaction name="actionAway"/>
+     <addaction name="actionDo_Not_Disturb"/>
+    </widget>
+    <addaction name="actionServer"/>
+    <addaction name="actionUsername"/>
+    <addaction name="menuStatus"/>
+   </widget>
+   <widget class="QMenu" name="menuAbout">
+    <property name="title">
+     <string>About</string>
+    </property>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuSettings"/>
+   <addaction name="menuAbout"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionConnect">
+   <property name="text">
+    <string>Connect</string>
+   </property>
+  </action>
+  <action name="actionDisconnect">
+   <property name="text">
+    <string>Disconnect</string>
+   </property>
+  </action>
+  <action name="actionSave_History">
+   <property name="text">
+    <string>Save History</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionServer">
+   <property name="text">
+    <string>Server</string>
+   </property>
+  </action>
+  <action name="actionUsername">
+   <property name="text">
+    <string>Username</string>
+   </property>
+  </action>
+  <action name="actionOnline">
+   <property name="text">
+    <string>Online</string>
+   </property>
+  </action>
+  <action name="actionAway">
+   <property name="text">
+    <string>Away</string>
+   </property>
+  </action>
+  <action name="actionDo_Not_Disturb">
+   <property name="text">
+    <string>Do Not Disturb</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
