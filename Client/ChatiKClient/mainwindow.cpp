@@ -99,3 +99,32 @@ void MainWindow::on_actionSave_History_triggered()
     saveDialog->show();
 }
 
+
+void MainWindow::on_actionShow_triggered()
+{
+    QDialog *dialog = new QDialog(this);
+    dialog->setModal(true);
+
+    QBoxLayout *layout = new QBoxLayout(QBoxLayout::TopToBottom);
+    QImage img("/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/ChatiKClient/author.jpg");
+    QImage author = img.scaled(img.width() / 6, img.height() / 6);
+    QString data = QDate::currentDate().toString("dd.MM.yyyy");
+    QLabel *label = new QLabel;
+    QPushButton *buttonClose = new QPushButton("Close");
+
+    label->setPixmap(QPixmap::fromImage(author));
+    label->setScaledContents(true);
+
+    layout->addWidget(label);
+    layout->addWidget(new QLabel("Build version: 6.3.1"));
+    layout->addWidget(new QLabel("Qt Version: " + QString(QT_VERSION_STR)));
+    layout->addWidget(new QLabel("Daniel Emelyanenko"));
+    layout->addWidget(new QLabel("Build date: " + data));
+    layout->addWidget(buttonClose);
+
+    dialog->setLayout(layout);
+    dialog->show();
+
+    connect(buttonClose, &QPushButton::clicked, dialog, &QDialog::close);
+}
+

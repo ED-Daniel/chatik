@@ -854,6 +854,8 @@ moc_mainwindow.cpp: ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qlabel.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QDateTime \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qdatetime.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QBoxLayout \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		../ChatiKClient/client.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QtCore \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qglobal.h \
@@ -1063,6 +1065,10 @@ moc_mainwindow.cpp: ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
 		../ChatiKClient/serverconfigdialog.h \
 		../ChatiKClient/xmlsavedialog.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers/QDomDocument \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers/qdom.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QFileDialog \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc
 	/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/macx-clang -I/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/ChatiKClient -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/danielemelyanenko/Qt/6.3.2/macos/lib ../ChatiKClient/mainwindow.h -o moc_mainwindow.cpp
 
@@ -1087,6 +1093,218 @@ moc_usernameeditdialog.cpp: ../ChatiKClient/usernameeditdialog.h \
 moc_xmlsavedialog.cpp: ../ChatiKClient/xmlsavedialog.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QDialog \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers/QDomDocument \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers/qdom.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QFileDialog \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		../ChatiKClient/client.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QtCore \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qglobal.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/q20algorithm.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/q20functional.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/q20iterator.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qabstractanimation.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qabstracteventdispatcher.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qabstractnativeeventfilter.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qabstractproxymodel.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qalgorithms.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qanimationgroup.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qanystringview.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qapplicationstatic.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qarraydata.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qarraydataops.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qarraydatapointer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qassociativeiterable.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qatomic.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbasictimer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbindingstorage.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbitarray.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbuffer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearray.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearrayalgorithms.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearraylist.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearraymatcher.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearrayview.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcache.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcalendar.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcborarray.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcborcommon.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcbormap.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcborstream.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcborstreamreader.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcborstreamwriter.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcborvalue.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qchar.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcollator.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcommandlineoption.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcommandlineparser.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcompare.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcompilerdetection.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qconcatenatetablesproxymodel.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcontainerfwd.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcontainerinfo.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcontiguouscache.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcoreapplication.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcoreevent.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcryptographichash.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qdatastream.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qdatetime.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qdeadlinetimer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qdebug.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qdir.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qdiriterator.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qeasingcurve.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qelapsedtimer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qendian.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qeventloop.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qexception.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfactoryinterface.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfile.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfiledevice.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfileinfo.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfileselector.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfilesystemwatcher.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qflags.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfuture.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfutureinterface.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfuturesynchronizer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfuturewatcher.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qgenericatomic.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qglobalstatic.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qhash.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qhashfunctions.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qidentityproxymodel.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qiodevice.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qiodevicebase.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qitemselectionmodel.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qiterable.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qiterator.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjnienvironment.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjniobject.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsonarray.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsondocument.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsonvalue.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qlibrary.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qlibraryinfo.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qline.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qlist.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qlocale.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qlockfile.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qloggingcategory.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qmap.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qmargins.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qmath.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qmessageauthenticationcode.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qmetacontainer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qmetaobject.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qmetatype.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qmimedata.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qmimedatabase.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qmimetype.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qmutex.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qnamespace.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qnativeinterface.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qnumeric.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qobject.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qobjectcleanuphandler.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qobjectdefs.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qoperatingsystemversion.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qpair.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qparallelanimationgroup.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qpauseanimation.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qplugin.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qpluginloader.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qpoint.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qpointer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qprocess.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qprocessordetection.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qpromise.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qproperty.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qpropertyanimation.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qpropertyprivate.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qqueue.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qrandom.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qreadwritelock.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qrect.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qrefcount.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qregularexpression.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qresource.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qresultstore.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qrunnable.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsavefile.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qscopedpointer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qscopedvaluerollback.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qscopeguard.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsemaphore.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsequentialanimationgroup.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsequentialiterable.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qset.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsettings.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qshareddata.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsharedmemory.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsharedpointer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsignalmapper.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsimd.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsize.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsocketnotifier.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsortfilterproxymodel.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstack.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstandardpaths.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstorageinfo.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstring.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstringalgorithms.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstringbuilder.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstringconverter.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstringlist.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstringlistmodel.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstringliteral.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstringmatcher.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstringtokenizer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstringview.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsysinfo.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsystemdetection.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsystemsemaphore.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtaggedpointer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtemporarydir.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtemporaryfile.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtextboundaryfinder.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtextstream.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qthread.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qthreadpool.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qthreadstorage.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtimeline.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtimer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtimezone.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtmetamacros.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtranslator.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtransposeproxymodel.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtypeinfo.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qurl.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qurlquery.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qutf8stringview.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/quuid.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qvariant.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qvariantanimation.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qvarlengtharray.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qvector.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qversionnumber.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qversiontagging.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qwaitcondition.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qwineventnotifier.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qxmlstream.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtcoreversion.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers/QTcpSocket \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers/qtcpsocket.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QVector \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonArray \
+		../ChatiKClient/transportinginterfaces.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QString \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonObject \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonParseError \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc
 	/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/macx-clang -I/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/ChatiKClient -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/danielemelyanenko/Qt/6.3.2/macos/lib ../ChatiKClient/xmlsavedialog.h -o moc_xmlsavedialog.cpp
 
@@ -1346,6 +1564,8 @@ main.o: ../ChatiKClient/main.cpp ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qlabel.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QDateTime \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qdatetime.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QBoxLayout \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		../ChatiKClient/client.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QtCore \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qglobal.h \
@@ -1555,6 +1775,10 @@ main.o: ../ChatiKClient/main.cpp ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
 		../ChatiKClient/serverconfigdialog.h \
 		../ChatiKClient/xmlsavedialog.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers/QDomDocument \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers/qdom.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QFileDialog \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QApplication \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../ChatiKClient/main.cpp
@@ -1570,6 +1794,8 @@ mainwindow.o: ../ChatiKClient/mainwindow.cpp ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qlabel.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QDateTime \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qdatetime.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QBoxLayout \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		../ChatiKClient/client.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QtCore \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qglobal.h \
@@ -1779,6 +2005,10 @@ mainwindow.o: ../ChatiKClient/mainwindow.cpp ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
 		../ChatiKClient/serverconfigdialog.h \
 		../ChatiKClient/xmlsavedialog.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers/QDomDocument \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers/qdom.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QFileDialog \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../ChatiKClient/mainwindow.cpp
 
@@ -1824,6 +2054,218 @@ vuex.o: ../ChatiKClient/vuex.cpp ../ChatiKClient/vuex.h \
 xmlsavedialog.o: ../ChatiKClient/xmlsavedialog.cpp ../ChatiKClient/xmlsavedialog.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QDialog \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers/QDomDocument \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers/qdom.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QFileDialog \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		../ChatiKClient/client.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QtCore \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qglobal.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/q20algorithm.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/q20functional.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/q20iterator.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qabstractanimation.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qabstracteventdispatcher.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qabstractnativeeventfilter.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qabstractproxymodel.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qalgorithms.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qanimationgroup.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qanystringview.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qapplicationstatic.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qarraydata.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qarraydataops.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qarraydatapointer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qassociativeiterable.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qatomic.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbasictimer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbindingstorage.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbitarray.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbuffer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearray.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearrayalgorithms.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearraylist.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearraymatcher.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearrayview.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcache.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcalendar.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcborarray.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcborcommon.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcbormap.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcborstream.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcborstreamreader.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcborstreamwriter.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcborvalue.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qchar.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcollator.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcommandlineoption.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcommandlineparser.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcompare.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcompilerdetection.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qconcatenatetablesproxymodel.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcontainerfwd.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcontainerinfo.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcontiguouscache.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcoreapplication.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcoreevent.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qcryptographichash.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qdatastream.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qdatetime.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qdeadlinetimer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qdebug.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qdir.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qdiriterator.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qeasingcurve.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qelapsedtimer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qendian.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qeventloop.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qexception.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfactoryinterface.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfile.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfiledevice.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfileinfo.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfileselector.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfilesystemwatcher.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qflags.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfuture.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfutureinterface.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfuturesynchronizer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfuturewatcher.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qgenericatomic.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qglobalstatic.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qhash.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qhashfunctions.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qidentityproxymodel.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qiodevice.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qiodevicebase.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qitemselectionmodel.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qiterable.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qiterator.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjnienvironment.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjniobject.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsonarray.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsondocument.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsonvalue.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qlibrary.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qlibraryinfo.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qline.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qlist.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qlocale.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qlockfile.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qloggingcategory.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qmap.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qmargins.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qmath.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qmessageauthenticationcode.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qmetacontainer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qmetaobject.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qmetatype.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qmimedata.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qmimedatabase.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qmimetype.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qmutex.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qnamespace.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qnativeinterface.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qnumeric.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qobject.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qobjectcleanuphandler.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qobjectdefs.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qoperatingsystemversion.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qpair.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qparallelanimationgroup.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qpauseanimation.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qplugin.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qpluginloader.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qpoint.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qpointer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qprocess.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qprocessordetection.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qpromise.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qproperty.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qpropertyanimation.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qpropertyprivate.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qqueue.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qrandom.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qreadwritelock.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qrect.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qrefcount.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qregularexpression.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qresource.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qresultstore.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qrunnable.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsavefile.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qscopedpointer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qscopedvaluerollback.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qscopeguard.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsemaphore.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsequentialanimationgroup.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsequentialiterable.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qset.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsettings.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qshareddata.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsharedmemory.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsharedpointer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsignalmapper.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsimd.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsize.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsocketnotifier.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsortfilterproxymodel.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstack.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstandardpaths.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstorageinfo.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstring.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstringalgorithms.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstringbuilder.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstringconverter.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstringlist.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstringlistmodel.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstringliteral.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstringmatcher.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstringtokenizer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstringview.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsysinfo.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsystemdetection.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsystemsemaphore.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtaggedpointer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtemporarydir.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtemporaryfile.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtextboundaryfinder.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtextstream.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qthread.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qthreadpool.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qthreadstorage.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtimeline.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtimer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtimezone.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtmetamacros.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtranslator.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtransposeproxymodel.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtypeinfo.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qurl.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qurlquery.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qutf8stringview.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/quuid.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qvariant.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qvariantanimation.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qvarlengtharray.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qvector.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qversionnumber.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qversiontagging.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qwaitcondition.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qwineventnotifier.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qxmlstream.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qtcoreversion.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers/QTcpSocket \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers/qtcpsocket.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QVector \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonArray \
+		../ChatiKClient/transportinginterfaces.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QString \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonObject \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonParseError \
 		ui_xmlsavedialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o xmlsavedialog.o ../ChatiKClient/xmlsavedialog.cpp
 

@@ -6,6 +6,7 @@
 #include<QJsonObject>
 #include<QLabel>
 #include<QDateTime>
+#include <QBoxLayout>
 
 #include "client.h"
 #include "vuex.h"
@@ -45,6 +46,8 @@ private slots:
     void on_actionUsername_triggered();
 
     void on_actionSave_History_triggered();
+
+    void on_actionShow_triggered();
 
 private:
     Ui::MainWindow *ui;

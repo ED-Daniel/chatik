@@ -35,6 +35,7 @@ public:
     QAction *actionOnline;
     QAction *actionAway;
     QAction *actionDo_Not_Disturb;
+    QAction *actionShow;
     QWidget *centralwidget;
     QLineEdit *messageInput;
     QPushButton *sendButton;
@@ -71,6 +72,8 @@ public:
         actionAway->setObjectName(QString::fromUtf8("actionAway"));
         actionDo_Not_Disturb = new QAction(MainWindow);
         actionDo_Not_Disturb->setObjectName(QString::fromUtf8("actionDo_Not_Disturb"));
+        actionShow = new QAction(MainWindow);
+        actionShow->setObjectName(QString::fromUtf8("actionShow"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         messageInput = new QLineEdit(centralwidget);
@@ -118,6 +121,7 @@ public:
         menuStatus->addAction(actionOnline);
         menuStatus->addAction(actionAway);
         menuStatus->addAction(actionDo_Not_Disturb);
+        menuAbout->addAction(actionShow);
 
         retranslateUi(MainWindow);
 
@@ -136,6 +140,7 @@ public:
         actionOnline->setText(QCoreApplication::translate("MainWindow", "Online", nullptr));
         actionAway->setText(QCoreApplication::translate("MainWindow", "Away", nullptr));
         actionDo_Not_Disturb->setText(QCoreApplication::translate("MainWindow", "Do Not Disturb", nullptr));
+        actionShow->setText(QCoreApplication::translate("MainWindow", "Show", nullptr));
         sendButton->setText(QCoreApplication::translate("MainWindow", "Send", nullptr));
         connectButton->setText(QCoreApplication::translate("MainWindow", "Connect", nullptr));
         menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
