@@ -10,6 +10,7 @@
 #include <QMediaPlayer>
 #include <QAudioOutput>
 #include <QVBoxLayout>
+#include <QFile>
 
 #include "client.h"
 #include "vuex.h"
@@ -58,6 +59,8 @@ private slots:
     void on_actionAway_triggered();
 
     void on_actionDo_Not_Disturb_triggered();
+
+    void on_actionProfile_Picture_triggered();
 
 private:
     Ui::MainWindow *ui;

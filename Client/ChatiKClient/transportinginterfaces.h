@@ -9,12 +9,17 @@
 #include<QJsonArray>
 #include<QVector>
 #include<exception>
+#include<QImage>
+#include<QBuffer>
+#include<QSaveFile>
+#include<QFile>
 
 enum SocketEvents {
     JOIN,
     MESSAGE,
     UPDATE_CLIENT,
-    UPDATE_CLIENTS
+    UPDATE_CLIENTS,
+    SEND_CLIENT_IMAGE
 };
 
 enum ClientStatuses {
@@ -55,7 +60,10 @@ public:
     QString getName() const;
     QString getIp() const;
     QString getConnectedTime() const;
+    QImage getImage() const;
     int getStatus() const;
+private:
+    QImage image;
 };
 
 class ClientsInfo : public BasicMessage {
@@ -75,6 +83,17 @@ public:
     QString getSender() const;
     QString getTime() const;
     QString getIp() const;
+};
+
+class ClientImage : public BasicMessage {
+public:
+    ClientImage(QString ip, QByteArray imageBytes);
+    ClientImage(QByteArray fromJson);
+    ClientImage(QJsonObject fromObject);
+
+    QByteArray getBytes() const;
+private:
+    QByteArray imageBytes;
 };
 
 #endif // TRANSPORTINGINTERFACES_H

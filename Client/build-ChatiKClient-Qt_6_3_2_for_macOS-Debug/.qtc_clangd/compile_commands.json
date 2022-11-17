@@ -1416,10 +1416,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/build-ChatiKClient-Qt_6_3_2_for_macOS-Debug/ui_serverconfigdialog.h"
+        "/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/build-ChatiKClient-Qt_6_3_2_for_macOS-Debug/ui_usernameeditdialog.h"
     ],
     "directory": "/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/build-ChatiKClient-Qt_6_3_2_for_macOS-Debug/.qtc_clangd",
-    "file": "/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/build-ChatiKClient-Qt_6_3_2_for_macOS-Debug/ui_serverconfigdialog.h"
+    "file": "/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/build-ChatiKClient-Qt_6_3_2_for_macOS-Debug/ui_usernameeditdialog.h"
 },
 {
     "arguments": [
@@ -1495,10 +1495,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/build-ChatiKClient-Qt_6_3_2_for_macOS-Debug/ui_usernameeditdialog.h"
+        "/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/build-ChatiKClient-Qt_6_3_2_for_macOS-Debug/ui_serverconfigdialog.h"
     ],
     "directory": "/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/build-ChatiKClient-Qt_6_3_2_for_macOS-Debug/.qtc_clangd",
-    "file": "/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/build-ChatiKClient-Qt_6_3_2_for_macOS-Debug/ui_usernameeditdialog.h"
+    "file": "/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/build-ChatiKClient-Qt_6_3_2_for_macOS-Debug/ui_serverconfigdialog.h"
 },
 {
     "arguments": [

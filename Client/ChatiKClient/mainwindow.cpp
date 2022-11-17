@@ -197,3 +197,28 @@ void MainWindow::on_actionDo_Not_Disturb_triggered()
     delete info;
 }
 
+
+void MainWindow::on_actionProfile_Picture_triggered()
+{
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Image"), QDir::homePath() + "/", tr("Image Files (*.png *.jpg *.bmp)"));
+
+    QFile* imageFile = new QFile(fileName);
+    imageFile->open(QIODevice::ReadOnly);
+    QByteArray imageBytes = imageFile->readAll();
+    imageFile->close();
+    delete imageFile;
+
+    Vuex::Instance().setProfileImageBytes(imageBytes);
+
+    ClientInfo *info = new ClientInfo(Vuex::Instance().getUsername(), Client::Instance().getIp(), Vuex::Instance().connectedTime, Vuex::Instance().getStatus());
+    Client::Instance().sendClientInfo(*info);
+
+    ClientImage *clientImg = new ClientImage("127.0.0.1", Vuex::Instance().getProfileImageBytes());
+
+    ClientImage *second = new ClientImage(clientImg->getBytes());
+
+    delete second;
+    delete clientImg;
+    delete info;
+}
+

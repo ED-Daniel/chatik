@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QSettings>
+#include <QByteArray>
 #include "transportinginterfaces.h"
 
 class Vuex
@@ -19,12 +20,14 @@ public:
     void setPort(quint16 port);
     void setUsername(QString username);
     void setStatus(ClientStatuses status);
+    void setProfileImageBytes(QByteArray image);
 
     void init(QString filename);
 
     QString getServerIp();
     quint16 getPort();
     QString getUsername();
+    QByteArray getProfileImageBytes();
     ClientStatuses getStatus();
 
 private:
@@ -41,6 +44,7 @@ private:
     ClientStatuses status = ClientStatuses::ONLINE;
 
     QString filename;
+    QByteArray profileImageBytes;
 };
 
 #endif // VUEX_H

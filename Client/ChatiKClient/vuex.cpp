@@ -28,6 +28,11 @@ void Vuex::setStatus(ClientStatuses status)
     settings.setValue("status", (uint) status);
 }
 
+void Vuex::setProfileImageBytes(QByteArray image)
+{
+    this->profileImageBytes = std::move(image);
+}
+
 void Vuex::init(QString filename)
 {
     QSettings settings(filename, QSettings::IniFormat);
@@ -52,6 +57,11 @@ quint16 Vuex::getPort()
 QString Vuex::getUsername()
 {
     return username;
+}
+
+QByteArray Vuex::getProfileImageBytes()
+{
+    return profileImageBytes;
 }
 
 ClientStatuses Vuex::getStatus()

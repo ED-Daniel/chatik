@@ -44,7 +44,7 @@ void XmlSaveDialog::on_buttonBox_accepted()
         QDomElement text = doc.createElement("text");
         msgElement.appendChild(text);
 
-        QDomText messageText = doc.createTextNode(message->getSender());
+        QDomText messageText = doc.createTextNode(message->getText());
         text.appendChild(messageText);
     }
     QString path = QFileDialog::getSaveFileName(0, QObject::tr("Укажите путь для сохранения"), QDir::homePath() + "/" + ui->fileName->text().trimmed() + ".xml", QObject::tr("XML files (*.xml)"));

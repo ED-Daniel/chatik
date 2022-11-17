@@ -111,6 +111,11 @@ QString ClientInfo::getConnectedTime() const {
     return jsonObject["connected_time"].toString();
 }
 
+QImage ClientInfo::getImage() const
+{
+    return image;
+}
+
 int ClientInfo::getStatus() const {
     return jsonObject["status"].toInt();
 }
@@ -132,3 +137,46 @@ QJsonArray ClientsInfo::getClients() const
     return jsonObject["clients"].toArray();
 }
 
+
+ClientImage::ClientImage(QString ip, QByteArray imageBytes) : BasicMessage(SocketEvents::SEND_CLIENT_IMAGE)
+{
+    jsonObject.insert("ip", ip);
+    jsonObject.insert("size", imageBytes.size());
+    this->imageBytes = std::move(imageBytes);
+
+    document.setObject(jsonObject);
+}
+
+ClientImage::ClientImage(QByteArray fromJson) : BasicMessage(fromJson)
+{
+    QJsonParseError parseError;
+    document = QJsonDocument::fromJson(fromJson, &parseError);
+    jsonObject = document.object();
+
+    qsizetype imageSize = jsonObject["size"].toInteger();
+    qDebug() << imageSize;
+    QByteArray imageBytes = fromJson.last(imageSize);
+    QSaveFile file("/Users/danielemelyanenko/Documents/recievedImage.jpg");
+    file.open(QIODevice::WriteOnly);
+    file.write(imageBytes);
+    file.commit();
+}
+
+ClientImage::ClientImage(QJsonObject fromObject) : BasicMessage(fromObject)
+{
+
+}
+
+QByteArray ClientImage::getBytes() const
+{
+    QByteArray bytes(document.toJson(QJsonDocument::Indented));
+    qDebug() << bytes.size();
+    bytes.append(imageBytes);
+
+    QSaveFile file("/Users/danielemelyanenko/Documents/bytes.txt");
+    file.open(QIODevice::WriteOnly);
+    file.write(bytes);
+    file.commit();
+
+    return bytes;
+}

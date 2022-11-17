@@ -37,6 +37,7 @@ public:
     QAction *actionAway;
     QAction *actionDo_Not_Disturb;
     QAction *actionShow;
+    QAction *actionProfile_Picture;
     QWidget *centralwidget;
     QLineEdit *messageInput;
     QPushButton *sendButton;
@@ -76,6 +77,8 @@ public:
         actionDo_Not_Disturb->setObjectName(QString::fromUtf8("actionDo_Not_Disturb"));
         actionShow = new QAction(MainWindow);
         actionShow->setObjectName(QString::fromUtf8("actionShow"));
+        actionProfile_Picture = new QAction(MainWindow);
+        actionProfile_Picture->setObjectName(QString::fromUtf8("actionProfile_Picture"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         messageInput = new QLineEdit(centralwidget);
@@ -123,6 +126,7 @@ public:
         menuSettings->addAction(actionServer);
         menuSettings->addAction(actionUsername);
         menuSettings->addAction(menuStatus->menuAction());
+        menuSettings->addAction(actionProfile_Picture);
         menuStatus->addAction(actionOnline);
         menuStatus->addAction(actionAway);
         menuStatus->addAction(actionDo_Not_Disturb);
@@ -146,6 +150,7 @@ public:
         actionAway->setText(QCoreApplication::translate("MainWindow", "Away", nullptr));
         actionDo_Not_Disturb->setText(QCoreApplication::translate("MainWindow", "Do Not Disturb", nullptr));
         actionShow->setText(QCoreApplication::translate("MainWindow", "Show", nullptr));
+        actionProfile_Picture->setText(QCoreApplication::translate("MainWindow", "Profile Picture", nullptr));
         sendButton->setText(QCoreApplication::translate("MainWindow", "Send", nullptr));
         connectButton->setText(QCoreApplication::translate("MainWindow", "Connect", nullptr));
         menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
