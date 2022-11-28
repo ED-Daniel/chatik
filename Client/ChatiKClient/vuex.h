@@ -21,6 +21,7 @@ public:
     void setUsername(QString username);
     void setStatus(ClientStatuses status);
     void setProfileImageBytes(QByteArray image);
+    void setMyId(QString id);
 
     void init(QString filename);
 
@@ -29,6 +30,7 @@ public:
     QString getUsername();
     QByteArray getProfileImageBytes();
     ClientStatuses getStatus();
+    QString getMyId();
 
 private:
     Vuex() {}
@@ -45,6 +47,7 @@ private:
 
     QString filename;
     QByteArray profileImageBytes;
+    QString myId;
 };
 
 #endif // VUEX_H

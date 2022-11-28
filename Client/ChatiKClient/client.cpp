@@ -72,6 +72,13 @@ void Client::slotReadyToRead()
         emit newMessage(*message);
     }
 
+    if (message->getEvent() == SocketEvents::UPDATE_CLIENT) {
+        ClientInfo *info = new ClientInfo(bytes);
+        Vuex::Instance().setMyId(info->getUuid());
+        qDebug() << Vuex::Instance().getMyId();
+        delete info;
+    }
+
     if (message->getEvent() == SocketEvents::UPDATE_CLIENTS) {
         qDebug() << "UPDATED CLIENTS";
         ClientsInfo *info = new ClientsInfo(bytes);

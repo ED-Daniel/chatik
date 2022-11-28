@@ -15,6 +15,7 @@ SOURCES += \
     client.cpp \
     main.cpp \
     mainwindow.cpp \
+    messagewidget.cpp \
     serverconfigdialog.cpp \
     transportinginterfaces.cpp \
     userelements.cpp \
@@ -25,6 +26,7 @@ SOURCES += \
 HEADERS += \
     client.h \
     mainwindow.h \
+    messagewidget.h \
     serverconfigdialog.h \
     transportinginterfaces.h \
     userelements.h \

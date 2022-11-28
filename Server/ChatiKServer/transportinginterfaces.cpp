@@ -35,6 +35,7 @@ QJsonObject BasicMessage::getJsonObject() const
 }
 
 ClientInfo::ClientInfo(QString name, QString ip, QString connectedTime, ClientStatuses status) : BasicMessage(SocketEvents::UPDATE_CLIENT) {
+    jsonObject.insert("uuid", QUuid::createUuid().toString());
     jsonObject.insert("name", name);
     jsonObject.insert("ip", ip);
     jsonObject.insert("connected_time", connectedTime);
@@ -57,6 +58,11 @@ QString ClientInfo::getIp() const {
 
 QString ClientInfo::getConnectedTime() const {
     return jsonObject["connected_time"].toString();
+}
+
+QString ClientInfo::getUuid() const
+{
+    return jsonObject["uuid"].toString();
 }
 
 int ClientInfo::getStatus() const {

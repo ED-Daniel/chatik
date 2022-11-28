@@ -9,6 +9,9 @@
 #include <QDateTime>
 #include <algorithm>
 #include <QJsonArray>
+#include <QUuid>
+#include <QCoreApplication>
+#include <QEventLoop>
 
 #include "transportinginterfaces.h"
 

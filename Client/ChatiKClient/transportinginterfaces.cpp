@@ -111,6 +111,10 @@ QString ClientInfo::getConnectedTime() const {
     return jsonObject["connected_time"].toString();
 }
 
+QString ClientInfo::getUuid() const {
+    return jsonObject["uuid"].toString();
+}
+
 QImage ClientInfo::getImage() const
 {
     return image;
@@ -149,8 +153,15 @@ ClientImage::ClientImage(QString ip, QByteArray imageBytes) : BasicMessage(Socke
 
 ClientImage::ClientImage(QByteArray fromJson) : BasicMessage(fromJson)
 {
+    QByteArray jsonSizeBytes = fromJson.first(8);
+    qsizetype jsonSize = to_qsizetype(jsonSizeBytes);
+    QByteArray jsonArray;
+    for (qsizetype i = 8; i < jsonSize + 8; i++) {
+        jsonArray.append(fromJson[i]);
+    }
+
     QJsonParseError parseError;
-    document = QJsonDocument::fromJson(fromJson, &parseError);
+    document = QJsonDocument::fromJson(jsonArray, &parseError);
     jsonObject = document.object();
 
     qsizetype imageSize = jsonObject["size"].toInteger();
@@ -170,7 +181,15 @@ ClientImage::ClientImage(QJsonObject fromObject) : BasicMessage(fromObject)
 QByteArray ClientImage::getBytes() const
 {
     QByteArray bytes(document.toJson(QJsonDocument::Indented));
-    qDebug() << bytes.size();
+    QByteArray bytesSize;
+
+    qsizetype s = bytes.size();
+    for(int i = 0; i != sizeof(s); ++i)
+    {
+      bytesSize.prepend((char)((s & (0xFF << (i*8))) >> (i*8)));
+    }
+
+    bytes.prepend(bytesSize);
     bytes.append(imageBytes);
 
     QSaveFile file("/Users/danielemelyanenko/Documents/bytes.txt");
@@ -179,4 +198,13 @@ QByteArray ClientImage::getBytes() const
     file.commit();
 
     return bytes;
+}
+
+qsizetype to_qsizetype(QByteArray data) {
+    qsizetype v = 0;
+    for (int i = 0; i < 8; i++) {
+      v = (v << 8) | data[i];
+    }
+
+    return v;
 }

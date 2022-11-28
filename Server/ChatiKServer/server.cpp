@@ -120,8 +120,15 @@ void Server::slotReadyRead()
                      );
             clientsInfo.insert(serverSocket->socketDescriptor(), newClient);
             emit clientConnected(*newClient);
+
             ClientsInfo *clientsToTransport = new ClientsInfo(clientsInfo.values());
             broadcast(clientsToTransport->getBytes());
+
+            QTime dieTime= QTime::currentTime().addSecs(1);
+            while (QTime::currentTime() < dieTime)
+                QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+
+            serverSocket->write(newClient->getBytes());
             emit clientsUpdated(clientsToTransport->getClients());
             delete clientsToTransport;
         }

@@ -28,6 +28,8 @@ enum ClientStatuses {
     DONT_DISTURB
 };
 
+qsizetype to_qsizetype(QByteArray data);
+
 class BasicMessage {
 public:
     BasicMessage(SocketEvents event);
@@ -60,6 +62,7 @@ public:
     QString getName() const;
     QString getIp() const;
     QString getConnectedTime() const;
+    QString getUuid() const;
     QImage getImage() const;
     int getStatus() const;
 private:

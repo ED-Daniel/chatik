@@ -5,7 +5,9 @@
 #include <QTcpSocket>
 #include <QVector>
 #include <QJsonArray>
+#include <QFile>
 #include"transportinginterfaces.h"
+#include"vuex.h"
 
 class Client : public QObject
 {

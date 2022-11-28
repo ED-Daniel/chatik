@@ -8,13 +8,15 @@
 #include<QByteArray>
 #include<QJsonParseError>
 #include<QList>
+#include<QUuid>
 #include<exception>
 
 enum SocketEvents {
     JOIN,
     MESSAGE,
     UPDATE_CLIENT,
-    UPDATE_CLIENTS
+    UPDATE_CLIENTS,
+    SEND_CLIENT_IMAGE
 };
 
 enum ClientStatuses {
@@ -46,6 +48,7 @@ public:
     QString getName() const;
     QString getIp() const;
     QString getConnectedTime() const;
+    QString getUuid() const;
     int getStatus() const;
 };
 

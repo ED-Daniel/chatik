@@ -33,6 +33,11 @@ void Vuex::setProfileImageBytes(QByteArray image)
     this->profileImageBytes = std::move(image);
 }
 
+void Vuex::setMyId(QString id)
+{
+    this->myId = id;
+}
+
 void Vuex::init(QString filename)
 {
     QSettings settings(filename, QSettings::IniFormat);
@@ -67,4 +72,9 @@ QByteArray Vuex::getProfileImageBytes()
 ClientStatuses Vuex::getStatus()
 {
     return status;
+}
+
+QString Vuex::getMyId()
+{
+    return this->myId;
 }
