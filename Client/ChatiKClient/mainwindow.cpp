@@ -1,5 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "messagewidget.h"
+
+#include <QScrollArea>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -11,6 +14,17 @@ MainWindow::MainWindow(QWidget *parent)
     connect(&Client::Instance(), SIGNAL(newMessage(TextMessage)), this, SLOT(createMessage(TextMessage)));
     connect(&Client::Instance(), SIGNAL(clientInfoUpdated(QJsonArray)), this, SLOT(setClients(QJsonArray)));
     ui->setupUi(this);
+
+    QScrollArea *scrollArea = new QScrollArea(this);
+    scrollArea->setWidgetResizable(true);
+    ui->messageArea->addWidget(scrollArea);
+
+    QWidget *scrollWidget = new QWidget();
+    scrollArea->setWidget(scrollWidget);
+
+    messageScrollLayout = new QVBoxLayout(scrollWidget);
+    messageSpacer = new QSpacerItem(100, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
+    messageScrollLayout->addItem(messageSpacer);
 }
 
 MainWindow::~MainWindow()
@@ -39,7 +53,13 @@ void MainWindow::createMessage(QString message)
 
 void MainWindow::createMessage(const TextMessage &message)
 {
-    ui->messagesArea->append(message.getSender() + ":\n" + message.getText() + "\n\n");
+    // ui->messagesArea->append(message.getSender() + ":\n" + message.getText() + "\n\n");
+    MessageWidget *newMessage = new MessageWidget(this, message);
+
+    messageScrollLayout->removeItem(messageSpacer);
+    messageScrollLayout->addWidget(newMessage);
+    messageScrollLayout->addItem(messageSpacer);
+
     ui->statusbar->showMessage(message.getSender() + ": " + message.getText());
     if (Vuex::Instance().getStatus() != ClientStatuses::DONT_DISTURB) {
         QMediaPlayer *player = new QMediaPlayer;

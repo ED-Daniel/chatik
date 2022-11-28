@@ -37,16 +37,6 @@
      <string>Send</string>
     </property>
    </widget>
-   <widget class="QTextBrowser" name="messagesArea">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>30</y>
-      <width>611</width>
-      <height>461</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QPushButton" name="connectButton">
     <property name="geometry">
      <rect>
@@ -70,6 +60,17 @@
      </rect>
     </property>
     <layout class="QVBoxLayout" name="clientsListHolder"/>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>29</y>
+      <width>611</width>
+      <height>461</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="messageArea"/>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

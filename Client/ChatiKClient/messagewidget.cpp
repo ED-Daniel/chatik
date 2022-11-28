@@ -1,6 +1,6 @@
 #include "messagewidget.h"
 
-#include <QHBoxLayout>
+#include <QVBoxLayout>
 
 MessageWidget::MessageWidget(QWidget *parent, TextMessage messageInfo)
 {
@@ -16,7 +16,7 @@ MessageWidget::MessageWidget(QWidget *parent, TextMessage messageInfo)
     QLabel *timeText = new QLabel(this);
     timeText->setText(messageInfo.getTime());
 
-    QHBoxLayout *layout = new QHBoxLayout( this );
+    QVBoxLayout *layout = new QVBoxLayout( this );
     layout->addWidget(senderText);
     layout->addWidget(ipText);
     layout->addWidget(messageText);

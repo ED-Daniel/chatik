@@ -11,6 +11,7 @@
 #include <QAudioOutput>
 #include <QVBoxLayout>
 #include <QFile>
+#include <QSpacerItem>
 
 #include "client.h"
 #include "vuex.h"
@@ -64,6 +65,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QVBoxLayout *messageScrollLayout;
+    QSpacerItem *messageSpacer;
     void connectToServer();
 };
 #endif // MAINWINDOW_H

@@ -55,6 +55,7 @@ OBJECTS_DIR   = ./
 SOURCES       = ../ChatiKClient/client.cpp \
 		../ChatiKClient/main.cpp \
 		../ChatiKClient/mainwindow.cpp \
+		../ChatiKClient/messagewidget.cpp \
 		../ChatiKClient/serverconfigdialog.cpp \
 		../ChatiKClient/transportinginterfaces.cpp \
 		../ChatiKClient/userelements.cpp \
@@ -69,6 +70,7 @@ SOURCES       = ../ChatiKClient/client.cpp \
 OBJECTS       = client.o \
 		main.o \
 		mainwindow.o \
+		messagewidget.o \
 		serverconfigdialog.o \
 		transportinginterfaces.o \
 		userelements.o \
@@ -235,6 +237,7 @@ DIST          = /Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/spec_pr
 		/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/lex.prf \
 		../ChatiKClient/ChatiKClient.pro ../ChatiKClient/client.h \
 		../ChatiKClient/mainwindow.h \
+		../ChatiKClient/messagewidget.h \
 		../ChatiKClient/serverconfigdialog.h \
 		../ChatiKClient/transportinginterfaces.h \
 		../ChatiKClient/userelements.h \
@@ -243,6 +246,7 @@ DIST          = /Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/spec_pr
 		../ChatiKClient/xmlsavedialog.h ../ChatiKClient/client.cpp \
 		../ChatiKClient/main.cpp \
 		../ChatiKClient/mainwindow.cpp \
+		../ChatiKClient/messagewidget.cpp \
 		../ChatiKClient/serverconfigdialog.cpp \
 		../ChatiKClient/transportinginterfaces.cpp \
 		../ChatiKClient/userelements.cpp \
@@ -621,8 +625,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../ChatiKClient/client.h ../ChatiKClient/mainwindow.h ../ChatiKClient/serverconfigdialog.h ../ChatiKClient/transportinginterfaces.h ../ChatiKClient/userelements.h ../ChatiKClient/usernameeditdialog.h ../ChatiKClient/vuex.h ../ChatiKClient/xmlsavedialog.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../ChatiKClient/client.cpp ../ChatiKClient/main.cpp ../ChatiKClient/mainwindow.cpp ../ChatiKClient/serverconfigdialog.cpp ../ChatiKClient/transportinginterfaces.cpp ../ChatiKClient/userelements.cpp ../ChatiKClient/usernameeditdialog.cpp ../ChatiKClient/vuex.cpp ../ChatiKClient/xmlsavedialog.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../ChatiKClient/client.h ../ChatiKClient/mainwindow.h ../ChatiKClient/messagewidget.h ../ChatiKClient/serverconfigdialog.h ../ChatiKClient/transportinginterfaces.h ../ChatiKClient/userelements.h ../ChatiKClient/usernameeditdialog.h ../ChatiKClient/vuex.h ../ChatiKClient/xmlsavedialog.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../ChatiKClient/client.cpp ../ChatiKClient/main.cpp ../ChatiKClient/mainwindow.cpp ../ChatiKClient/messagewidget.cpp ../ChatiKClient/serverconfigdialog.cpp ../ChatiKClient/transportinginterfaces.cpp ../ChatiKClient/userelements.cpp ../ChatiKClient/usernameeditdialog.cpp ../ChatiKClient/vuex.cpp ../ChatiKClient/xmlsavedialog.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../ChatiKClient/mainwindow.ui ../ChatiKClient/serverconfigdialog.ui ../ChatiKClient/usernameeditdialog.ui ../ChatiKClient/xmlsavedialog.ui $(DISTDIR)/
 
 
@@ -857,12 +861,19 @@ moc_client.cpp: ../ChatiKClient/client.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers/qtcpsocket.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QVector \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonArray \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QFile \
 		../ChatiKClient/transportinginterfaces.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QString \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonObject \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonParseError \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QImage \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qimage.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QBuffer \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSaveFile \
+		../ChatiKClient/vuex.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSettings \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc
 	/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/macx-clang -I/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/ChatiKClient -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/danielemelyanenko/Qt/6.3.2/macos/lib ../ChatiKClient/client.h -o moc_client.cpp
 
@@ -883,6 +894,9 @@ moc_mainwindow.cpp: ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/QAudioOutput \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/qaudiooutput.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QFile \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfile.h \
 		../ChatiKClient/client.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QtCore \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qglobal.h \
@@ -945,7 +959,6 @@ moc_mainwindow.cpp: ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qeventloop.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qexception.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfactoryinterface.h \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfile.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfiledevice.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfileinfo.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfileselector.h \
@@ -1086,6 +1099,10 @@ moc_mainwindow.cpp: ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonParseError \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QImage \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qimage.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QBuffer \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSaveFile \
 		../ChatiKClient/vuex.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSettings \
 		../ChatiKClient/usernameeditdialog.h \
@@ -1102,6 +1119,8 @@ moc_mainwindow.cpp: ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QMouseEvent \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qevent.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc
 	/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/macx-clang -I/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/ChatiKClient -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/danielemelyanenko/Qt/6.3.2/macos/lib ../ChatiKClient/mainwindow.h -o moc_mainwindow.cpp
 
@@ -1113,18 +1132,26 @@ moc_serverconfigdialog.cpp: ../ChatiKClient/serverconfigdialog.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstring.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSettings \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsettings.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearray.h \
 		../ChatiKClient/transportinginterfaces.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsondocument.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonObject \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsonobject.h \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearray.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonParseError \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonArray \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsonarray.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QVector \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qvector.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QImage \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qimage.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QBuffer \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbuffer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSaveFile \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsavefile.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QFile \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfile.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc
 	/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/macx-clang -I/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/ChatiKClient -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/danielemelyanenko/Qt/6.3.2/macos/lib ../ChatiKClient/serverconfigdialog.h -o moc_serverconfigdialog.cpp
 
@@ -1137,18 +1164,13 @@ moc_userelements.cpp: ../ChatiKClient/userelements.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qlabel.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QMouseEvent \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qevent.h \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc
-	/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/macx-clang -I/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/ChatiKClient -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/danielemelyanenko/Qt/6.3.2/macos/lib ../ChatiKClient/userelements.h -o moc_userelements.cpp
-
-moc_usernameeditdialog.cpp: ../ChatiKClient/usernameeditdialog.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QDialog \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		../ChatiKClient/vuex.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../ChatiKClient/transportinginterfaces.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QString \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstring.h \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSettings \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsettings.h \
-		../ChatiKClient/transportinginterfaces.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsondocument.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonObject \
@@ -1160,6 +1182,45 @@ moc_usernameeditdialog.cpp: ../ChatiKClient/usernameeditdialog.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsonarray.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QVector \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qvector.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QImage \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qimage.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QBuffer \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbuffer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSaveFile \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsavefile.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QFile \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfile.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc
+	/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/macx-clang -I/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/ChatiKClient -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/danielemelyanenko/Qt/6.3.2/macos/lib ../ChatiKClient/userelements.h -o moc_userelements.cpp
+
+moc_usernameeditdialog.cpp: ../ChatiKClient/usernameeditdialog.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QDialog \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../ChatiKClient/vuex.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QString \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstring.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSettings \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsettings.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearray.h \
+		../ChatiKClient/transportinginterfaces.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsondocument.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonObject \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonParseError \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonArray \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsonarray.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QVector \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qvector.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QImage \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qimage.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QBuffer \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbuffer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSaveFile \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsavefile.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QFile \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfile.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc
 	/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/macx-clang -I/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/ChatiKClient -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/danielemelyanenko/Qt/6.3.2/macos/lib ../ChatiKClient/usernameeditdialog.h -o moc_usernameeditdialog.cpp
 
@@ -1372,12 +1433,19 @@ moc_xmlsavedialog.cpp: ../ChatiKClient/xmlsavedialog.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers/qtcpsocket.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QVector \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonArray \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QFile \
 		../ChatiKClient/transportinginterfaces.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QString \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonObject \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonParseError \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QImage \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qimage.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QBuffer \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSaveFile \
+		../ChatiKClient/vuex.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSettings \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc
 	/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/macx-clang -I/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/ChatiKClient -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/danielemelyanenko/Qt/6.3.2/macos/lib ../ChatiKClient/xmlsavedialog.h -o moc_xmlsavedialog.cpp
 
@@ -1618,12 +1686,19 @@ client.o: ../ChatiKClient/client.cpp ../ChatiKClient/client.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers/qtcpsocket.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QVector \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonArray \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QFile \
 		../ChatiKClient/transportinginterfaces.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QString \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonObject \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonParseError
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonParseError \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QImage \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qimage.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QBuffer \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSaveFile \
+		../ChatiKClient/vuex.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSettings
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o client.o ../ChatiKClient/client.cpp
 
 main.o: ../ChatiKClient/main.cpp ../ChatiKClient/mainwindow.h \
@@ -1643,6 +1718,9 @@ main.o: ../ChatiKClient/main.cpp ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/QAudioOutput \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/qaudiooutput.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QFile \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfile.h \
 		../ChatiKClient/client.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QtCore \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qglobal.h \
@@ -1705,7 +1783,6 @@ main.o: ../ChatiKClient/main.cpp ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qeventloop.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qexception.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfactoryinterface.h \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfile.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfiledevice.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfileinfo.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfileselector.h \
@@ -1846,6 +1923,10 @@ main.o: ../ChatiKClient/main.cpp ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonParseError \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QImage \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qimage.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QBuffer \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSaveFile \
 		../ChatiKClient/vuex.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSettings \
 		../ChatiKClient/usernameeditdialog.h \
@@ -1862,6 +1943,8 @@ main.o: ../ChatiKClient/main.cpp ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QMouseEvent \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qevent.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QApplication \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../ChatiKClient/main.cpp
@@ -1883,6 +1966,9 @@ mainwindow.o: ../ChatiKClient/mainwindow.cpp ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/QAudioOutput \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers/qaudiooutput.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QFile \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfile.h \
 		../ChatiKClient/client.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QtCore \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qglobal.h \
@@ -1945,7 +2031,6 @@ mainwindow.o: ../ChatiKClient/mainwindow.cpp ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qeventloop.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qexception.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfactoryinterface.h \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfile.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfiledevice.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfileinfo.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfileselector.h \
@@ -2086,6 +2171,10 @@ mainwindow.o: ../ChatiKClient/mainwindow.cpp ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonParseError \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QImage \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qimage.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QBuffer \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSaveFile \
 		../ChatiKClient/vuex.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSettings \
 		../ChatiKClient/usernameeditdialog.h \
@@ -2102,17 +2191,19 @@ mainwindow.o: ../ChatiKClient/mainwindow.cpp ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QMouseEvent \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qevent.h \
-		ui_mainwindow.h
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		ui_mainwindow.h \
+		../ChatiKClient/messagewidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../ChatiKClient/mainwindow.cpp
 
-serverconfigdialog.o: ../ChatiKClient/serverconfigdialog.cpp ../ChatiKClient/serverconfigdialog.h \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QDialog \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		../ChatiKClient/vuex.h \
+messagewidget.o: ../ChatiKClient/messagewidget.cpp ../ChatiKClient/messagewidget.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QString \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstring.h \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSettings \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsettings.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QLabel \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qlabel.h \
 		../ChatiKClient/transportinginterfaces.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsondocument.h \
@@ -2125,6 +2216,46 @@ serverconfigdialog.o: ../ChatiKClient/serverconfigdialog.cpp ../ChatiKClient/ser
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsonarray.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QVector \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qvector.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QImage \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qimage.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QBuffer \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbuffer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSaveFile \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsavefile.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QFile \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfile.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qboxlayout.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o messagewidget.o ../ChatiKClient/messagewidget.cpp
+
+serverconfigdialog.o: ../ChatiKClient/serverconfigdialog.cpp ../ChatiKClient/serverconfigdialog.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QDialog \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../ChatiKClient/vuex.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QString \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstring.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSettings \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsettings.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearray.h \
+		../ChatiKClient/transportinginterfaces.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsondocument.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonObject \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonParseError \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonArray \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsonarray.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QVector \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qvector.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QImage \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qimage.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QBuffer \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbuffer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSaveFile \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsavefile.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QFile \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfile.h \
 		ui_serverconfigdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o serverconfigdialog.o ../ChatiKClient/serverconfigdialog.cpp
 
@@ -2141,7 +2272,15 @@ transportinginterfaces.o: ../ChatiKClient/transportinginterfaces.cpp ../ChatiKCl
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonArray \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsonarray.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QVector \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qvector.h
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qvector.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QImage \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qimage.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QBuffer \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbuffer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSaveFile \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsavefile.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QFile \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfile.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o transportinginterfaces.o ../ChatiKClient/transportinginterfaces.cpp
 
 userelements.o: ../ChatiKClient/userelements.cpp ../ChatiKClient/userelements.h \
@@ -2152,18 +2291,14 @@ userelements.o: ../ChatiKClient/userelements.cpp ../ChatiKClient/userelements.h 
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QLabel \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qlabel.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QMouseEvent \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qevent.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o userelements.o ../ChatiKClient/userelements.cpp
-
-usernameeditdialog.o: ../ChatiKClient/usernameeditdialog.cpp ../ChatiKClient/usernameeditdialog.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qevent.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QDialog \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		../ChatiKClient/vuex.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../ChatiKClient/transportinginterfaces.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QString \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstring.h \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSettings \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsettings.h \
-		../ChatiKClient/transportinginterfaces.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsondocument.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonObject \
@@ -2175,6 +2310,44 @@ usernameeditdialog.o: ../ChatiKClient/usernameeditdialog.cpp ../ChatiKClient/use
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsonarray.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QVector \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qvector.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QImage \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qimage.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QBuffer \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbuffer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSaveFile \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsavefile.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QFile \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfile.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o userelements.o ../ChatiKClient/userelements.cpp
+
+usernameeditdialog.o: ../ChatiKClient/usernameeditdialog.cpp ../ChatiKClient/usernameeditdialog.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QDialog \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../ChatiKClient/vuex.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QString \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstring.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSettings \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsettings.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearray.h \
+		../ChatiKClient/transportinginterfaces.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsondocument.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonObject \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonParseError \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonArray \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsonarray.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QVector \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qvector.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QImage \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qimage.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QBuffer \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbuffer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSaveFile \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsavefile.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QFile \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfile.h \
 		ui_usernameeditdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o usernameeditdialog.o ../ChatiKClient/usernameeditdialog.cpp
 
@@ -2183,18 +2356,26 @@ vuex.o: ../ChatiKClient/vuex.cpp ../ChatiKClient/vuex.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstring.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSettings \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsettings.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearray.h \
 		../ChatiKClient/transportinginterfaces.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsondocument.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonObject \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsonobject.h \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearray.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonParseError \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonArray \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsonarray.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QVector \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qvector.h
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qvector.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QImage \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qimage.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QBuffer \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbuffer.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSaveFile \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsavefile.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QFile \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfile.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o vuex.o ../ChatiKClient/vuex.cpp
 
 xmlsavedialog.o: ../ChatiKClient/xmlsavedialog.cpp ../ChatiKClient/xmlsavedialog.h \
@@ -2406,12 +2587,19 @@ xmlsavedialog.o: ../ChatiKClient/xmlsavedialog.cpp ../ChatiKClient/xmlsavedialog
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers/qtcpsocket.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QVector \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonArray \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QFile \
 		../ChatiKClient/transportinginterfaces.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QString \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonObject \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonParseError \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QImage \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qimage.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QBuffer \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSaveFile \
+		../ChatiKClient/vuex.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSettings \
 		ui_xmlsavedialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o xmlsavedialog.o ../ChatiKClient/xmlsavedialog.cpp
 

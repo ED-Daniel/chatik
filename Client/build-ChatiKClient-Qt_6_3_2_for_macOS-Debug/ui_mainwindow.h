@@ -12,13 +12,13 @@
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -41,10 +41,11 @@ public:
     QWidget *centralwidget;
     QLineEdit *messageInput;
     QPushButton *sendButton;
-    QTextBrowser *messagesArea;
     QPushButton *connectButton;
     QWidget *verticalLayoutWidget;
     QVBoxLayout *clientsListHolder;
+    QWidget *gridLayoutWidget;
+    QGridLayout *messageArea;
     QMenuBar *menubar;
     QMenu *menuFile;
     QMenu *menuSettings;
@@ -87,9 +88,6 @@ public:
         sendButton = new QPushButton(centralwidget);
         sendButton->setObjectName(QString::fromUtf8("sendButton"));
         sendButton->setGeometry(QRect(560, 500, 61, 41));
-        messagesArea = new QTextBrowser(centralwidget);
-        messagesArea->setObjectName(QString::fromUtf8("messagesArea"));
-        messagesArea->setGeometry(QRect(10, 30, 611, 461));
         connectButton = new QPushButton(centralwidget);
         connectButton->setObjectName(QString::fromUtf8("connectButton"));
         connectButton->setGeometry(QRect(630, 500, 161, 41));
@@ -99,6 +97,12 @@ public:
         clientsListHolder = new QVBoxLayout(verticalLayoutWidget);
         clientsListHolder->setObjectName(QString::fromUtf8("clientsListHolder"));
         clientsListHolder->setContentsMargins(0, 0, 0, 0);
+        gridLayoutWidget = new QWidget(centralwidget);
+        gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
+        gridLayoutWidget->setGeometry(QRect(9, 29, 611, 461));
+        messageArea = new QGridLayout(gridLayoutWidget);
+        messageArea->setObjectName(QString::fromUtf8("messageArea"));
+        messageArea->setContentsMargins(0, 0, 0, 0);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
