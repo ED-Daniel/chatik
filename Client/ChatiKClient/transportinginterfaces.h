@@ -39,6 +39,7 @@ public:
     QByteArray getBytes() const;
     int getEvent() const;
     QJsonObject getJsonObject() const;
+    bool isFile = false;
 protected:
     QJsonDocument document;
     QJsonObject jsonObject;
@@ -75,6 +76,7 @@ public:
     ClientsInfo(QByteArray fromJson);
 
     QJsonArray getClients() const;
+
 };
 
 class TextMessage : public BasicMessage {
@@ -95,6 +97,8 @@ public:
     ClientImage(QJsonObject fromObject);
 
     QByteArray getBytes() const;
+
+    void saveToFile();
 private:
     QByteArray imageBytes;
 };

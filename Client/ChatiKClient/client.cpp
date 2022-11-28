@@ -46,6 +46,11 @@ void Client::sendClientInfo(const ClientInfo &info)
     clientSocket->write(info.getBytes());
 }
 
+void Client::sendFile(const ClientImage &fileInfo)
+{
+    clientSocket->write(fileInfo.getBytes());
+}
+
 void Client::disconnect()
 {
     clientSocket->disconnect();
@@ -65,6 +70,11 @@ void Client::slotReadyToRead()
 {
     QByteArray bytes = clientSocket->readAll();
     BasicMessage *message = new BasicMessage(bytes);
+
+    if (message->isFile) {
+        ClientImage *sentFile = new ClientImage(bytes);
+        emit newFile(sentFile);
+    }
 
     if (message->getEvent() == SocketEvents::MESSAGE) {
         TextMessage *message = new TextMessage(bytes);

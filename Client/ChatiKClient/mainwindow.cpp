@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
     Vuex::Instance().init("/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/ChatiKClient/settings.ini");
     connect(&Client::Instance(), SIGNAL(newMessage(QString)), this, SLOT(createMessage(QString)));
     connect(&Client::Instance(), SIGNAL(newMessage(TextMessage)), this, SLOT(createMessage(TextMessage)));
+    connect(&Client::Instance(), SIGNAL(newFile(ClientImage*)), this, SLOT(createFileMessage(ClientImage*)));
     connect(&Client::Instance(), SIGNAL(clientInfoUpdated(QJsonArray)), this, SLOT(setClients(QJsonArray)));
     ui->setupUi(this);
 
@@ -61,6 +62,25 @@ void MainWindow::createMessage(const TextMessage &message)
     messageScrollLayout->addItem(messageSpacer);
 
     ui->statusbar->showMessage(message.getSender() + ": " + message.getText());
+    if (Vuex::Instance().getStatus() != ClientStatuses::DONT_DISTURB) {
+        QMediaPlayer *player = new QMediaPlayer;
+        QAudioOutput *audio = new QAudioOutput;
+        player->setAudioOutput(audio);
+        player->setSource(QUrl::fromLocalFile("/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/ChatiKClient/sound.wav"));
+        audio->setVolume(50);
+        player->play();
+        qDebug() << "AUDIO";
+    }
+}
+
+void MainWindow::createFileMessage(ClientImage *sentFile)
+{
+    MessageWidget *newMessage = new MessageWidget(this, sentFile);
+
+    messageScrollLayout->removeItem(messageSpacer);
+    messageScrollLayout->addWidget(newMessage);
+    messageScrollLayout->addItem(messageSpacer);
+
     if (Vuex::Instance().getStatus() != ClientStatuses::DONT_DISTURB) {
         QMediaPlayer *player = new QMediaPlayer;
         QAudioOutput *audio = new QAudioOutput;
@@ -229,16 +249,8 @@ void MainWindow::on_actionProfile_Picture_triggered()
     delete imageFile;
 
     Vuex::Instance().setProfileImageBytes(imageBytes);
-
-    ClientInfo *info = new ClientInfo(Vuex::Instance().getUsername(), Client::Instance().getIp(), Vuex::Instance().connectedTime, Vuex::Instance().getStatus());
-    Client::Instance().sendClientInfo(*info);
-
     ClientImage *clientImg = new ClientImage("127.0.0.1", Vuex::Instance().getProfileImageBytes());
-
-    ClientImage *second = new ClientImage(clientImg->getBytes());
-
-    delete second;
+    Client::Instance().sendFile(*clientImg);
     delete clientImg;
-    delete info;
 }
 

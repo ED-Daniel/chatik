@@ -1,6 +1,7 @@
 #include "messagewidget.h"
 
 #include <QVBoxLayout>
+#include <QPushButton>
 
 MessageWidget::MessageWidget(QWidget *parent, TextMessage messageInfo)
 {
@@ -21,4 +22,23 @@ MessageWidget::MessageWidget(QWidget *parent, TextMessage messageInfo)
     layout->addWidget(ipText);
     layout->addWidget(messageText);
     layout->addWidget(timeText);
+}
+
+MessageWidget::MessageWidget(QWidget *parent, ClientImage *sentFile)
+{
+    this->sentFile = sentFile;
+    QVBoxLayout *layout = new QVBoxLayout( this );
+
+    QPushButton *fileOpenButton = new QPushButton(this);
+    connect(fileOpenButton, &QPushButton::clicked, this, &MessageWidget::saveToFile);
+    fileOpenButton->setText("OPEN FILE");
+    layout->addWidget(fileOpenButton);
+
+}
+
+void MessageWidget::saveToFile()
+{
+    if (sentFile != nullptr) {
+        sentFile->saveToFile();
+    }
 }

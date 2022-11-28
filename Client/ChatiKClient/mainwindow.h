@@ -39,6 +39,7 @@ private slots:
     void on_sendButton_clicked();
     void createMessage(QString message);
     void createMessage(const TextMessage &message);
+    void createFileMessage(ClientImage *sentFile);
     void setClients(const QJsonArray &info);
 
     void on_actionConnect_triggered();

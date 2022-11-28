@@ -4,12 +4,15 @@
 #include<QString>
 #include<QJsonDocument>
 #include<QJsonObject>
-#include<QJsonArray>
 #include<QByteArray>
 #include<QJsonParseError>
-#include<QList>
-#include<QUuid>
+#include<QJsonArray>
+#include<QVector>
 #include<exception>
+#include<QImage>
+#include<QBuffer>
+#include<QSaveFile>
+#include<QFile>
 
 enum SocketEvents {
     JOIN,
@@ -25,6 +28,8 @@ enum ClientStatuses {
     DONT_DISTURB
 };
 
+qsizetype to_qsizetype(QByteArray data);
+
 class BasicMessage {
 public:
     BasicMessage(SocketEvents event);
@@ -34,6 +39,8 @@ public:
     QByteArray getBytes() const;
     int getEvent() const;
     QJsonObject getJsonObject() const;
+
+    bool isFile = false;
 protected:
     QJsonDocument document;
     QJsonObject jsonObject;
@@ -67,6 +74,17 @@ public:
     ClientsInfo(QByteArray fromJson);
 
     QJsonArray getClients() const;
+};
+
+class ClientImage : public BasicMessage {
+public:
+    ClientImage(QString ip, QByteArray imageBytes);
+    ClientImage(QByteArray fromJson);
+    ClientImage(QJsonObject fromObject);
+
+    QByteArray getBytes() const;
+private:
+    QByteArray imageBytes;
 };
 
 #endif // TRANSPORTINTERFACES_H

@@ -43,12 +43,17 @@ BasicMessage::BasicMessage(QByteArray basicMessage)
     QJsonParseError parseError;
     document = QJsonDocument::fromJson(basicMessage, &parseError);
     jsonObject = document.object();
+
+    if (jsonObject.value("event").isUndefined()) {
+        isFile = true;
+    }
 }
 
 BasicMessage::BasicMessage(QJsonObject jsonObject)
 {
     this->jsonObject = jsonObject;
     document.setObject(jsonObject);
+
 }
 
 QByteArray BasicMessage::getBytes() const
@@ -171,6 +176,8 @@ ClientImage::ClientImage(QByteArray fromJson) : BasicMessage(fromJson)
     file.open(QIODevice::WriteOnly);
     file.write(imageBytes);
     file.commit();
+
+    this->imageBytes = std::move(imageBytes);
 }
 
 ClientImage::ClientImage(QJsonObject fromObject) : BasicMessage(fromObject)
@@ -198,6 +205,14 @@ QByteArray ClientImage::getBytes() const
     file.commit();
 
     return bytes;
+}
+
+void ClientImage::saveToFile()
+{
+    QSaveFile file("/Users/danielemelyanenko/Documents/test.txt");
+    file.open(QIODevice::WriteOnly);
+    file.write(imageBytes);
+    file.commit();
 }
 
 qsizetype to_qsizetype(QByteArray data) {

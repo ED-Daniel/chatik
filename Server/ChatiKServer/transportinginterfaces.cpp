@@ -11,6 +11,9 @@ BasicMessage::BasicMessage(QByteArray basicMessage)
     QJsonParseError parseError;
     document = QJsonDocument::fromJson(basicMessage, &parseError);
     jsonObject = document.object();
+    if (jsonObject.value("event").isUndefined()) {
+        isFile = true;
+    }
 }
 
 BasicMessage::BasicMessage(QJsonObject basicObject) {
@@ -104,3 +107,60 @@ QJsonArray ClientsInfo::getClients() const
     return jsonObject["clients"].toArray();
 }
 
+ClientImage::ClientImage(QString ip, QByteArray imageBytes) : BasicMessage(SocketEvents::SEND_CLIENT_IMAGE)
+{
+    jsonObject.insert("ip", ip);
+    jsonObject.insert("size", imageBytes.size());
+    this->imageBytes = std::move(imageBytes);
+
+    document.setObject(jsonObject);
+}
+
+ClientImage::ClientImage(QByteArray fromJson) : BasicMessage(fromJson)
+{
+    QByteArray jsonSizeBytes = fromJson.first(8);
+    qsizetype jsonSize = to_qsizetype(jsonSizeBytes);
+    QByteArray jsonArray;
+    for (qsizetype i = 8; i < jsonSize + 8; i++) {
+        jsonArray.append(fromJson[i]);
+    }
+
+    QJsonParseError parseError;
+    document = QJsonDocument::fromJson(jsonArray, &parseError);
+    jsonObject = document.object();
+
+    qsizetype imageSize = jsonObject["size"].toInteger();
+    qDebug() << imageSize;
+    QByteArray imageBytes = fromJson.last(imageSize);
+}
+
+ClientImage::ClientImage(QJsonObject fromObject) : BasicMessage(fromObject)
+{
+
+}
+
+QByteArray ClientImage::getBytes() const
+{
+    QByteArray bytes(document.toJson(QJsonDocument::Indented));
+    QByteArray bytesSize;
+
+    qsizetype s = bytes.size();
+    for(int i = 0; i != sizeof(s); ++i)
+    {
+      bytesSize.prepend((char)((s & (0xFF << (i*8))) >> (i*8)));
+    }
+
+    bytes.prepend(bytesSize);
+    bytes.append(imageBytes);
+
+    return bytes;
+}
+
+qsizetype to_qsizetype(QByteArray data) {
+    qsizetype v = 0;
+    for (int i = 0; i < 8; i++) {
+      v = (v << 8) | data[i];
+    }
+
+    return v;
+}

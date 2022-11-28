@@ -24,6 +24,7 @@ public:
     void join(const JoinInfo &info);
     void sendMessage(const BasicMessage &message);
     void sendClientInfo(const ClientInfo &info);
+    void sendFile(const ClientImage &fileInfo);
     void disconnect();
     QString getIp();
     QVector<TextMessage*> getMessages() const;
@@ -31,6 +32,7 @@ signals:
     void newMessage(QString str);
     void newMessage(const TextMessage &message);
     void clientInfoUpdated(const QJsonArray &info);
+    void newFile(ClientImage *sentFile);
 
 private:
     Client() {}

@@ -107,6 +107,12 @@ void Server::slotReadyRead()
     try {
         qDebug() << bytes.length();
         message = new BasicMessage(bytes);
+
+        if (message->isFile) {
+            qDebug() << "FILE";
+            broadcast(bytes);
+        }
+
         if (message->getEvent() == SocketEvents::JOIN) {
             qDebug() << "JOIN";
 
