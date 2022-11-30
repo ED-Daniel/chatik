@@ -218,7 +218,7 @@ QByteArray ClientImage::getBytes() const
 
 void ClientImage::saveToFile()
 {
-    QSaveFile file("/Users/danielemelyanenko/Documents/test.jpg");
+    QSaveFile file(QDir::currentPath() + "/" + getFileName());
     file.open(QIODevice::WriteOnly);
     file.write(imageBytes);
     file.commit();

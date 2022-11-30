@@ -1,51 +1,57 @@
 #include "messagewidget.h"
+#include "vuex.h"
 
 #include <QVBoxLayout>
-#include <QPushButton>
 #include <QDesktopServices>
 #include <QUrl>
 #include <QMenu>
 #include <QFileDialog>
+#include <QPalette>
 
 MessageWidget::MessageWidget(QWidget *parent, TextMessage messageInfo)
 {
-    QLabel *messageText = new QLabel(this);
+    messageText = new QLabel(this);
     messageText->setText(messageInfo.getText());
 
-    QLabel *ipText = new QLabel(this);
+    ipText = new QLabel(this);
     ipText->setText(messageInfo.getIp());
 
-    QLabel *senderText = new QLabel(this);
+    senderText = new QLabel(this);
     senderText->setText(messageInfo.getSender());
 
-    QLabel *timeText = new QLabel(this);
+    timeText = new QLabel(this);
     timeText->setText(messageInfo.getTime());
 
-    QVBoxLayout *layout = new QVBoxLayout( this );
     layout->addWidget(senderText);
     layout->addWidget(ipText);
     layout->addWidget(messageText);
     layout->addWidget(timeText);
+
+    messageString = messageInfo.getText();
+    ipString = messageInfo.getIp();
+    timeString = messageInfo.getTime();
+    senderString = messageInfo.getSender();
+
+    applyColor();
 }
 
 MessageWidget::MessageWidget(QWidget *parent, ClientImage *sentFile)
 {
     this->sentFile = sentFile;
-    QVBoxLayout *layout = new QVBoxLayout( this );
 
-    QLabel *messageText = new QLabel(this);
+    messageText = new QLabel(this);
     messageText->setText(sentFile->getFileName());
 
-    QLabel *ipText = new QLabel(this);
+    ipText = new QLabel(this);
     ipText->setText(sentFile->getIp());
 
-    QLabel *senderText = new QLabel(this);
+    senderText = new QLabel(this);
     senderText->setText(sentFile->getSender());
 
-    QLabel *timeText = new QLabel(this);
+    timeText = new QLabel(this);
     timeText->setText(sentFile->getTime());
 
-    QPushButton *fileOpenButton = new QPushButton(this);
+    fileOpenButton = new QPushButton(this);
     connect(fileOpenButton, &QPushButton::clicked, this, &MessageWidget::openMenu);
     fileOpenButton->setText("FILE");
     layout->addWidget(senderText);
@@ -54,7 +60,28 @@ MessageWidget::MessageWidget(QWidget *parent, ClientImage *sentFile)
     layout->addWidget(fileOpenButton);
     layout->addWidget(timeText);
 
+    messageString = sentFile->getFileName();
+    ipString = sentFile->getIp();
+    timeString = sentFile->getTime();
+    senderString = sentFile->getSender();
 
+    applyColor();
+}
+
+void MessageWidget::redraw() {
+    ipText->setText(Vuex::Instance().showIp ? ipString : "");
+    timeText->setText(Vuex::Instance().showTime ? timeString : "");
+
+    applyColor();
+}
+
+void MessageWidget::applyColor()
+{
+    QPalette pal = QPalette();
+    pal.setColor(QPalette::Window, Vuex::Instance().messagesColor);
+    this->setAutoFillBackground(true);
+    this->setPalette(pal);
+    this->update();
 }
 
 void MessageWidget::saveToFile()
@@ -69,9 +96,8 @@ void MessageWidget::openInApplication()
 {
     if (sentFile != nullptr) {
         sentFile->saveToFile();
+        QDesktopServices::openUrl(QUrl("file://" + QDir::currentPath() + "/" + sentFile->getFileName()));
     }
-
-    QDesktopServices::openUrl(QUrl("file:///Users/danielemelyanenko/Documents/test.jpg"));
 }
 
 void MessageWidget::openMenu()

@@ -20,6 +20,7 @@
 #include "serverconfigdialog.h"
 #include "xmlsavedialog.h"
 #include "userelements.h"
+#include "messagewidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -32,6 +33,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+public slots:
+    void openFileDialog();
 
 private slots:
     void on_connectButton_clicked();
@@ -64,10 +67,18 @@ private slots:
 
     void on_actionProfile_Picture_triggered();
 
+    void on_moreOptions_clicked();
+
+    void on_actionBackground_Color_triggered();
+
+    void on_actionMessage_Color_triggered();
+
 private:
     Ui::MainWindow *ui;
     QVBoxLayout *messageScrollLayout;
     QSpacerItem *messageSpacer;
+    QVector<MessageWidget*> messageWidgets = QVector<MessageWidget*>();
     void connectToServer();
+    void updateMessages();
 };
 #endif // MAINWINDOW_H

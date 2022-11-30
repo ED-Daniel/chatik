@@ -4,6 +4,7 @@
 #include <QString>
 #include <QSettings>
 #include <QByteArray>
+#include <QColor>
 #include "transportinginterfaces.h"
 
 class Vuex
@@ -13,6 +14,10 @@ public:
         static Vuex vuex;
         return vuex;
     }
+
+    QColor messagesColor;
+    bool showIp = true;
+    bool showTime = true;
 
     QString connectedTime;
 

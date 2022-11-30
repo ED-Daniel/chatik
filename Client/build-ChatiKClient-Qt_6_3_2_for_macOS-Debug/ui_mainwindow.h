@@ -38,6 +38,10 @@ public:
     QAction *actionDo_Not_Disturb;
     QAction *actionShow;
     QAction *actionProfile_Picture;
+    QAction *actionBackground_Color;
+    QAction *actionMessage_Color;
+    QAction *actionIP_show_hide;
+    QAction *actionTime_Show_Hide;
     QWidget *centralwidget;
     QLineEdit *messageInput;
     QPushButton *sendButton;
@@ -46,11 +50,13 @@ public:
     QVBoxLayout *clientsListHolder;
     QWidget *gridLayoutWidget;
     QGridLayout *messageArea;
+    QPushButton *moreOptions;
     QMenuBar *menubar;
     QMenu *menuFile;
     QMenu *menuSettings;
     QMenu *menuStatus;
     QMenu *menuAbout;
+    QMenu *menuView;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -80,6 +86,16 @@ public:
         actionShow->setObjectName(QString::fromUtf8("actionShow"));
         actionProfile_Picture = new QAction(MainWindow);
         actionProfile_Picture->setObjectName(QString::fromUtf8("actionProfile_Picture"));
+        actionBackground_Color = new QAction(MainWindow);
+        actionBackground_Color->setObjectName(QString::fromUtf8("actionBackground_Color"));
+        actionMessage_Color = new QAction(MainWindow);
+        actionMessage_Color->setObjectName(QString::fromUtf8("actionMessage_Color"));
+        actionIP_show_hide = new QAction(MainWindow);
+        actionIP_show_hide->setObjectName(QString::fromUtf8("actionIP_show_hide"));
+        actionIP_show_hide->setCheckable(true);
+        actionTime_Show_Hide = new QAction(MainWindow);
+        actionTime_Show_Hide->setObjectName(QString::fromUtf8("actionTime_Show_Hide"));
+        actionTime_Show_Hide->setCheckable(true);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         messageInput = new QLineEdit(centralwidget);
@@ -87,7 +103,7 @@ public:
         messageInput->setGeometry(QRect(10, 500, 541, 41));
         sendButton = new QPushButton(centralwidget);
         sendButton->setObjectName(QString::fromUtf8("sendButton"));
-        sendButton->setGeometry(QRect(560, 500, 61, 41));
+        sendButton->setGeometry(QRect(560, 500, 41, 41));
         connectButton = new QPushButton(centralwidget);
         connectButton->setObjectName(QString::fromUtf8("connectButton"));
         connectButton->setGeometry(QRect(630, 500, 161, 41));
@@ -103,6 +119,9 @@ public:
         messageArea = new QGridLayout(gridLayoutWidget);
         messageArea->setObjectName(QString::fromUtf8("messageArea"));
         messageArea->setContentsMargins(0, 0, 0, 0);
+        moreOptions = new QPushButton(centralwidget);
+        moreOptions->setObjectName(QString::fromUtf8("moreOptions"));
+        moreOptions->setGeometry(QRect(600, 500, 21, 41));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -115,6 +134,8 @@ public:
         menuStatus->setObjectName(QString::fromUtf8("menuStatus"));
         menuAbout = new QMenu(menubar);
         menuAbout->setObjectName(QString::fromUtf8("menuAbout"));
+        menuView = new QMenu(menubar);
+        menuView->setObjectName(QString::fromUtf8("menuView"));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -123,6 +144,7 @@ public:
         menubar->addAction(menuFile->menuAction());
         menubar->addAction(menuSettings->menuAction());
         menubar->addAction(menuAbout->menuAction());
+        menubar->addAction(menuView->menuAction());
         menuFile->addAction(actionConnect);
         menuFile->addAction(actionDisconnect);
         menuFile->addAction(actionSave_History);
@@ -135,6 +157,10 @@ public:
         menuStatus->addAction(actionAway);
         menuStatus->addAction(actionDo_Not_Disturb);
         menuAbout->addAction(actionShow);
+        menuView->addAction(actionBackground_Color);
+        menuView->addAction(actionMessage_Color);
+        menuView->addAction(actionIP_show_hide);
+        menuView->addAction(actionTime_Show_Hide);
 
         retranslateUi(MainWindow);
 
@@ -155,12 +181,18 @@ public:
         actionDo_Not_Disturb->setText(QCoreApplication::translate("MainWindow", "Do Not Disturb", nullptr));
         actionShow->setText(QCoreApplication::translate("MainWindow", "Show", nullptr));
         actionProfile_Picture->setText(QCoreApplication::translate("MainWindow", "Profile Picture", nullptr));
+        actionBackground_Color->setText(QCoreApplication::translate("MainWindow", "Background Color", nullptr));
+        actionMessage_Color->setText(QCoreApplication::translate("MainWindow", "Message Color", nullptr));
+        actionIP_show_hide->setText(QCoreApplication::translate("MainWindow", "IP Show/Hide", nullptr));
+        actionTime_Show_Hide->setText(QCoreApplication::translate("MainWindow", "Time Show/Hide", nullptr));
         sendButton->setText(QCoreApplication::translate("MainWindow", "Send", nullptr));
         connectButton->setText(QCoreApplication::translate("MainWindow", "Connect", nullptr));
+        moreOptions->setText(QCoreApplication::translate("MainWindow", "...", nullptr));
         menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
         menuSettings->setTitle(QCoreApplication::translate("MainWindow", "Settings", nullptr));
         menuStatus->setTitle(QCoreApplication::translate("MainWindow", "Status", nullptr));
         menuAbout->setTitle(QCoreApplication::translate("MainWindow", "About", nullptr));
+        menuView->setTitle(QCoreApplication::translate("MainWindow", "View", nullptr));
     } // retranslateUi
 
 };

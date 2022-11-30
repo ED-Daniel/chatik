@@ -29,7 +29,7 @@
      <rect>
       <x>560</x>
       <y>500</y>
-      <width>61</width>
+      <width>41</width>
       <height>41</height>
      </rect>
     </property>
@@ -71,6 +71,19 @@
      </rect>
     </property>
     <layout class="QGridLayout" name="messageArea"/>
+   </widget>
+   <widget class="QPushButton" name="moreOptions">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>500</y>
+      <width>21</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>...</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -114,9 +127,19 @@
     </property>
     <addaction name="actionShow"/>
    </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>View</string>
+    </property>
+    <addaction name="actionBackground_Color"/>
+    <addaction name="actionMessage_Color"/>
+    <addaction name="actionIP_show_hide"/>
+    <addaction name="actionTime_Show_Hide"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuSettings"/>
    <addaction name="menuAbout"/>
+   <addaction name="menuView"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionConnect">
@@ -172,6 +195,32 @@
   <action name="actionProfile_Picture">
    <property name="text">
     <string>Profile Picture</string>
+   </property>
+  </action>
+  <action name="actionBackground_Color">
+   <property name="text">
+    <string>Background Color</string>
+   </property>
+  </action>
+  <action name="actionMessage_Color">
+   <property name="text">
+    <string>Message Color</string>
+   </property>
+  </action>
+  <action name="actionIP_show_hide">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>IP Show/Hide</string>
+   </property>
+  </action>
+  <action name="actionTime_Show_Hide">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Time Show/Hide</string>
    </property>
   </action>
  </widget>

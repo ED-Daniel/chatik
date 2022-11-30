@@ -3,6 +3,8 @@
 #include "messagewidget.h"
 
 #include <QScrollArea>
+#include <QColorDialog>
+#include <QObjectList>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -31,6 +33,31 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::openFileDialog()
+{
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), QDir::homePath() + "/");
+
+    QFile* imageFile = new QFile(fileName);
+    imageFile->open(QIODevice::ReadOnly);
+    QByteArray imageBytes = imageFile->readAll();
+
+    QFileInfo fileInfo(imageFile->fileName());
+    QString filename(fileInfo.fileName());
+
+    imageFile->close();
+    delete imageFile;
+
+    Vuex::Instance().setProfileImageBytes(imageBytes);
+    ClientImage *clientImg = new ClientImage(Client::Instance().getIp(),
+                                             Vuex::Instance().getUsername(),
+                                             filename,
+                                             QDateTime::currentDateTime().toString(),
+                                             Vuex::Instance().getProfileImageBytes()
+                                             );
+    Client::Instance().sendFile(*clientImg);
+    delete clientImg;
 }
 
 void MainWindow::on_connectButton_clicked()
@@ -71,6 +98,8 @@ void MainWindow::createMessage(const TextMessage &message)
         player->play();
         qDebug() << "AUDIO";
     }
+
+    messageWidgets.append(newMessage);
 }
 
 void MainWindow::createFileMessage(ClientImage *sentFile)
@@ -90,6 +119,8 @@ void MainWindow::createFileMessage(ClientImage *sentFile)
         player->play();
         qDebug() << "AUDIO";
     }
+
+    messageWidgets.append(newMessage);
 }
 
 void MainWindow::setClients(const QJsonArray &info)
@@ -147,6 +178,13 @@ void MainWindow::connectToServer()
     JoinInfo * info = new JoinInfo(Vuex::Instance().getUsername(), Vuex::Instance().getStatus());
     Client::Instance().join(*info);
     delete info;
+}
+
+void MainWindow::updateMessages()
+{
+    for (MessageWidget* message : messageWidgets) {
+        message->redraw();
+    }
 }
 
 void MainWindow::on_actionDisconnect_triggered()
@@ -246,16 +284,49 @@ void MainWindow::on_actionProfile_Picture_triggered()
     imageFile->open(QIODevice::ReadOnly);
     QByteArray imageBytes = imageFile->readAll();
 
+    QFileInfo fileInfo(imageFile->fileName());
+    QString filename(fileInfo.fileName());
+
+    imageFile->close();
+    delete imageFile;
+
     Vuex::Instance().setProfileImageBytes(imageBytes);
     ClientImage *clientImg = new ClientImage(Client::Instance().getIp(),
                                              Vuex::Instance().getUsername(),
-                                             imageFile->fileName(),
+                                             filename,
                                              QDateTime::currentDateTime().toString(),
                                              Vuex::Instance().getProfileImageBytes()
                                              );
     Client::Instance().sendFile(*clientImg);
     delete clientImg;
-    imageFile->close();
-    delete imageFile;
+}
+
+
+void MainWindow::on_moreOptions_clicked()
+{
+    QMenu * contextMenu = new QMenu();
+    QAction * openAction = new QAction("Open File", this);
+    connect(openAction, &QAction::triggered, this, &MainWindow::openFileDialog);
+    contextMenu->addAction(openAction);
+    contextMenu->popup(this->mapToGlobal(ui->moreOptions->pos()));
+}
+
+
+void MainWindow::on_actionBackground_Color_triggered()
+{
+    QColor color = QColorDialog::getColor();
+    QPalette pal = QPalette();
+    pal.setColor(QPalette::Window, color);
+
+    this->setAutoFillBackground(true);
+    this->setPalette(pal);
+    this->update();
+}
+
+
+void MainWindow::on_actionMessage_Color_triggered()
+{
+    Vuex::Instance().messagesColor = QColorDialog::getColor();
+    updateMessages();
 }
 
