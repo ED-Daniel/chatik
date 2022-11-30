@@ -35,6 +35,7 @@ public:
     ~MainWindow();
 public slots:
     void openFileDialog();
+    void updateMessagesSlot();
 
 private slots:
     void on_connectButton_clicked();
@@ -72,6 +73,10 @@ private slots:
     void on_actionBackground_Color_triggered();
 
     void on_actionMessage_Color_triggered();
+
+    void on_actionIP_show_hide_triggered();
+
+    void on_actionTime_Show_Hide_triggered();
 
 private:
     Ui::MainWindow *ui;

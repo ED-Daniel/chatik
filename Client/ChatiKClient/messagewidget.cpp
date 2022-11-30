@@ -10,27 +10,28 @@
 
 MessageWidget::MessageWidget(QWidget *parent, TextMessage messageInfo)
 {
-    messageText = new QLabel(this);
-    messageText->setText(messageInfo.getText());
-
-    ipText = new QLabel(this);
-    ipText->setText(messageInfo.getIp());
-
-    senderText = new QLabel(this);
-    senderText->setText(messageInfo.getSender());
-
-    timeText = new QLabel(this);
-    timeText->setText(messageInfo.getTime());
-
-    layout->addWidget(senderText);
-    layout->addWidget(ipText);
-    layout->addWidget(messageText);
-    layout->addWidget(timeText);
 
     messageString = messageInfo.getText();
     ipString = messageInfo.getIp();
     timeString = messageInfo.getTime();
     senderString = messageInfo.getSender();
+
+    messageText = new QLabel(this);
+    messageText->setText(messageInfo.getText());
+
+    ipText = new QLabel(this);
+    ipText->setText(Vuex::Instance().showIp ? ipString : "");
+
+    senderText = new QLabel(this);
+    senderText->setText(messageInfo.getSender());
+
+    timeText = new QLabel(this);
+    timeText->setText(Vuex::Instance().showTime ? timeString : "");
+
+    layout->addWidget(senderText);
+    layout->addWidget(ipText);
+    layout->addWidget(messageText);
+    layout->addWidget(timeText);
 
     applyColor();
 }
@@ -39,17 +40,22 @@ MessageWidget::MessageWidget(QWidget *parent, ClientImage *sentFile)
 {
     this->sentFile = sentFile;
 
+    messageString = sentFile->getFileName();
+    ipString = sentFile->getIp();
+    timeString = sentFile->getTime();
+    senderString = sentFile->getSender();
+
     messageText = new QLabel(this);
     messageText->setText(sentFile->getFileName());
 
     ipText = new QLabel(this);
-    ipText->setText(sentFile->getIp());
+    ipText->setText(Vuex::Instance().showIp ? ipString : "");
 
     senderText = new QLabel(this);
     senderText->setText(sentFile->getSender());
 
     timeText = new QLabel(this);
-    timeText->setText(sentFile->getTime());
+    timeText->setText(Vuex::Instance().showTime ? timeString : "");
 
     fileOpenButton = new QPushButton(this);
     connect(fileOpenButton, &QPushButton::clicked, this, &MessageWidget::openMenu);
@@ -60,11 +66,6 @@ MessageWidget::MessageWidget(QWidget *parent, ClientImage *sentFile)
     layout->addWidget(fileOpenButton);
     layout->addWidget(timeText);
 
-    messageString = sentFile->getFileName();
-    ipString = sentFile->getIp();
-    timeString = sentFile->getTime();
-    senderString = sentFile->getSender();
-
     applyColor();
 }
 
@@ -73,12 +74,14 @@ void MessageWidget::redraw() {
     timeText->setText(Vuex::Instance().showTime ? timeString : "");
 
     applyColor();
+    this->update();
 }
 
 void MessageWidget::applyColor()
 {
     QPalette pal = QPalette();
     pal.setColor(QPalette::Window, Vuex::Instance().messagesColor);
+    pal.setColor(QPalette::WindowText, Vuex::Instance().textMessageColor);
     this->setAutoFillBackground(true);
     this->setPalette(pal);
     this->update();

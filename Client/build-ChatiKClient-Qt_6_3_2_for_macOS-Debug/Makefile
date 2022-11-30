@@ -55,6 +55,7 @@ OBJECTS_DIR   = ./
 SOURCES       = ../ChatiKClient/client.cpp \
 		../ChatiKClient/main.cpp \
 		../ChatiKClient/mainwindow.cpp \
+		../ChatiKClient/messagecolordialog.cpp \
 		../ChatiKClient/messagewidget.cpp \
 		../ChatiKClient/serverconfigdialog.cpp \
 		../ChatiKClient/transportinginterfaces.cpp \
@@ -63,6 +64,7 @@ SOURCES       = ../ChatiKClient/client.cpp \
 		../ChatiKClient/vuex.cpp \
 		../ChatiKClient/xmlsavedialog.cpp moc_client.cpp \
 		moc_mainwindow.cpp \
+		moc_messagecolordialog.cpp \
 		moc_serverconfigdialog.cpp \
 		moc_userelements.cpp \
 		moc_usernameeditdialog.cpp \
@@ -70,6 +72,7 @@ SOURCES       = ../ChatiKClient/client.cpp \
 OBJECTS       = client.o \
 		main.o \
 		mainwindow.o \
+		messagecolordialog.o \
 		messagewidget.o \
 		serverconfigdialog.o \
 		transportinginterfaces.o \
@@ -79,6 +82,7 @@ OBJECTS       = client.o \
 		xmlsavedialog.o \
 		moc_client.o \
 		moc_mainwindow.o \
+		moc_messagecolordialog.o \
 		moc_serverconfigdialog.o \
 		moc_userelements.o \
 		moc_usernameeditdialog.o \
@@ -237,6 +241,7 @@ DIST          = /Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/spec_pr
 		/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/lex.prf \
 		../ChatiKClient/ChatiKClient.pro ../ChatiKClient/client.h \
 		../ChatiKClient/mainwindow.h \
+		../ChatiKClient/messagecolordialog.h \
 		../ChatiKClient/messagewidget.h \
 		../ChatiKClient/serverconfigdialog.h \
 		../ChatiKClient/transportinginterfaces.h \
@@ -246,6 +251,7 @@ DIST          = /Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/spec_pr
 		../ChatiKClient/xmlsavedialog.h ../ChatiKClient/client.cpp \
 		../ChatiKClient/main.cpp \
 		../ChatiKClient/mainwindow.cpp \
+		../ChatiKClient/messagecolordialog.cpp \
 		../ChatiKClient/messagewidget.cpp \
 		../ChatiKClient/serverconfigdialog.cpp \
 		../ChatiKClient/transportinginterfaces.cpp \
@@ -273,7 +279,7 @@ include /Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/features/mac/sdk.mk
 first: all
 ####### Build rules
 
-ChatiKClient.app/Contents/MacOS/ChatiKClient: ui_mainwindow.h ui_serverconfigdialog.h ui_usernameeditdialog.h ui_xmlsavedialog.h $(OBJECTS)  
+ChatiKClient.app/Contents/MacOS/ChatiKClient: ui_mainwindow.h ui_messagecolordialog.h ui_serverconfigdialog.h ui_usernameeditdialog.h ui_xmlsavedialog.h $(OBJECTS)  
 	@test -d ChatiKClient.app/Contents/MacOS/ || mkdir -p ChatiKClient.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET)  $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -625,9 +631,9 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../ChatiKClient/client.h ../ChatiKClient/mainwindow.h ../ChatiKClient/messagewidget.h ../ChatiKClient/serverconfigdialog.h ../ChatiKClient/transportinginterfaces.h ../ChatiKClient/userelements.h ../ChatiKClient/usernameeditdialog.h ../ChatiKClient/vuex.h ../ChatiKClient/xmlsavedialog.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../ChatiKClient/client.cpp ../ChatiKClient/main.cpp ../ChatiKClient/mainwindow.cpp ../ChatiKClient/messagewidget.cpp ../ChatiKClient/serverconfigdialog.cpp ../ChatiKClient/transportinginterfaces.cpp ../ChatiKClient/userelements.cpp ../ChatiKClient/usernameeditdialog.cpp ../ChatiKClient/vuex.cpp ../ChatiKClient/xmlsavedialog.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../ChatiKClient/mainwindow.ui ../ChatiKClient/serverconfigdialog.ui ../ChatiKClient/usernameeditdialog.ui ../ChatiKClient/xmlsavedialog.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../ChatiKClient/client.h ../ChatiKClient/mainwindow.h ../ChatiKClient/messagecolordialog.h ../ChatiKClient/messagewidget.h ../ChatiKClient/serverconfigdialog.h ../ChatiKClient/transportinginterfaces.h ../ChatiKClient/userelements.h ../ChatiKClient/usernameeditdialog.h ../ChatiKClient/vuex.h ../ChatiKClient/xmlsavedialog.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../ChatiKClient/client.cpp ../ChatiKClient/main.cpp ../ChatiKClient/mainwindow.cpp ../ChatiKClient/messagecolordialog.cpp ../ChatiKClient/messagewidget.cpp ../ChatiKClient/serverconfigdialog.cpp ../ChatiKClient/transportinginterfaces.cpp ../ChatiKClient/userelements.cpp ../ChatiKClient/usernameeditdialog.cpp ../ChatiKClient/vuex.cpp ../ChatiKClient/xmlsavedialog.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../ChatiKClient/mainwindow.ui ../ChatiKClient/messagecolordialog.ui ../ChatiKClient/serverconfigdialog.ui ../ChatiKClient/usernameeditdialog.ui ../ChatiKClient/xmlsavedialog.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -656,9 +662,9 @@ benchmark: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_client.cpp moc_mainwindow.cpp moc_serverconfigdialog.cpp moc_userelements.cpp moc_usernameeditdialog.cpp moc_xmlsavedialog.cpp
+compiler_moc_header_make_all: moc_client.cpp moc_mainwindow.cpp moc_messagecolordialog.cpp moc_serverconfigdialog.cpp moc_userelements.cpp moc_usernameeditdialog.cpp moc_xmlsavedialog.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_client.cpp moc_mainwindow.cpp moc_serverconfigdialog.cpp moc_userelements.cpp moc_usernameeditdialog.cpp moc_xmlsavedialog.cpp
+	-$(DEL_FILE) moc_client.cpp moc_mainwindow.cpp moc_messagecolordialog.cpp moc_serverconfigdialog.cpp moc_userelements.cpp moc_usernameeditdialog.cpp moc_xmlsavedialog.cpp
 moc_client.cpp: ../ChatiKClient/client.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QtCore \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qglobal.h \
@@ -874,6 +880,8 @@ moc_client.cpp: ../ChatiKClient/client.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSaveFile \
 		../ChatiKClient/vuex.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSettings \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QColor \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qcolor.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc
 	/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/macx-clang -I/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/ChatiKClient -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/danielemelyanenko/Qt/6.3.2/macos/lib ../ChatiKClient/client.h -o moc_client.cpp
 
@@ -1107,6 +1115,8 @@ moc_mainwindow.cpp: ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSaveFile \
 		../ChatiKClient/vuex.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSettings \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QColor \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qcolor.h \
 		../ChatiKClient/usernameeditdialog.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QDialog \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
@@ -1123,8 +1133,15 @@ moc_mainwindow.cpp: ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qevent.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QPushButton \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../ChatiKClient/messagewidget.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc
 	/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/macx-clang -I/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/ChatiKClient -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/danielemelyanenko/Qt/6.3.2/macos/lib ../ChatiKClient/mainwindow.h -o moc_mainwindow.cpp
+
+moc_messagecolordialog.cpp: ../ChatiKClient/messagecolordialog.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QDialog \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc
+	/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/macx-clang -I/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/ChatiKClient -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/danielemelyanenko/Qt/6.3.2/macos/lib ../ChatiKClient/messagecolordialog.h -o moc_messagecolordialog.cpp
 
 moc_serverconfigdialog.cpp: ../ChatiKClient/serverconfigdialog.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QDialog \
@@ -1136,6 +1153,8 @@ moc_serverconfigdialog.cpp: ../ChatiKClient/serverconfigdialog.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsettings.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearray.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QColor \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qcolor.h \
 		../ChatiKClient/transportinginterfaces.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsondocument.h \
@@ -1205,6 +1224,8 @@ moc_usernameeditdialog.cpp: ../ChatiKClient/usernameeditdialog.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsettings.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearray.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QColor \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qcolor.h \
 		../ChatiKClient/transportinginterfaces.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsondocument.h \
@@ -1448,6 +1469,8 @@ moc_xmlsavedialog.cpp: ../ChatiKClient/xmlsavedialog.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSaveFile \
 		../ChatiKClient/vuex.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSettings \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QColor \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qcolor.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc
 	/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/danielemelyanenko/Qt/6.3.2/macos/mkspecs/macx-clang -I/Users/danielemelyanenko/Documents/QtProjects/ChatiK/Client/ChatiKClient -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtMultimedia.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtNetwork.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtXml.framework/Headers -I/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/danielemelyanenko/Qt/6.3.2/macos/lib ../ChatiKClient/xmlsavedialog.h -o moc_xmlsavedialog.cpp
 
@@ -1455,12 +1478,16 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h ui_serverconfigdialog.h ui_usernameeditdialog.h ui_xmlsavedialog.h
+compiler_uic_make_all: ui_mainwindow.h ui_messagecolordialog.h ui_serverconfigdialog.h ui_usernameeditdialog.h ui_xmlsavedialog.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h ui_serverconfigdialog.h ui_usernameeditdialog.h ui_xmlsavedialog.h
+	-$(DEL_FILE) ui_mainwindow.h ui_messagecolordialog.h ui_serverconfigdialog.h ui_usernameeditdialog.h ui_xmlsavedialog.h
 ui_mainwindow.h: ../ChatiKClient/mainwindow.ui \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/uic
 	/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/uic ../ChatiKClient/mainwindow.ui -o ui_mainwindow.h
+
+ui_messagecolordialog.h: ../ChatiKClient/messagecolordialog.ui \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/uic
+	/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/uic ../ChatiKClient/messagecolordialog.ui -o ui_messagecolordialog.h
 
 ui_serverconfigdialog.h: ../ChatiKClient/serverconfigdialog.ui \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/libexec/uic
@@ -1700,7 +1727,9 @@ client.o: ../ChatiKClient/client.cpp ../ChatiKClient/client.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QBuffer \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSaveFile \
 		../ChatiKClient/vuex.h \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSettings
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSettings \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QColor \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qcolor.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o client.o ../ChatiKClient/client.cpp
 
 main.o: ../ChatiKClient/main.cpp ../ChatiKClient/mainwindow.h \
@@ -1933,6 +1962,8 @@ main.o: ../ChatiKClient/main.cpp ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSaveFile \
 		../ChatiKClient/vuex.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSettings \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QColor \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qcolor.h \
 		../ChatiKClient/usernameeditdialog.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QDialog \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
@@ -1949,6 +1980,7 @@ main.o: ../ChatiKClient/main.cpp ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qevent.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QPushButton \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../ChatiKClient/messagewidget.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QApplication \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../ChatiKClient/main.cpp
@@ -2183,6 +2215,8 @@ mainwindow.o: ../ChatiKClient/mainwindow.cpp ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSaveFile \
 		../ChatiKClient/vuex.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSettings \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QColor \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qcolor.h \
 		../ChatiKClient/usernameeditdialog.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QDialog \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
@@ -2199,11 +2233,20 @@ mainwindow.o: ../ChatiKClient/mainwindow.cpp ../ChatiKClient/mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qevent.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QPushButton \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
-		ui_mainwindow.h \
 		../ChatiKClient/messagewidget.h \
+		ui_mainwindow.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QScrollArea \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qscrollarea.h
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QColorDialog \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qcolordialog.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QObjectList
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../ChatiKClient/mainwindow.cpp
+
+messagecolordialog.o: ../ChatiKClient/messagecolordialog.cpp ../ChatiKClient/messagecolordialog.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QDialog \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		ui_messagecolordialog.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o messagecolordialog.o ../ChatiKClient/messagecolordialog.cpp
 
 messagewidget.o: ../ChatiKClient/messagewidget.cpp ../ChatiKClient/messagewidget.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QWidget \
@@ -2212,6 +2255,10 @@ messagewidget.o: ../ChatiKClient/messagewidget.cpp ../ChatiKClient/messagewidget
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qstring.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QLabel \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		../ChatiKClient/transportinginterfaces.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsondocument.h \
@@ -2232,16 +2279,21 @@ messagewidget.o: ../ChatiKClient/messagewidget.cpp ../ChatiKClient/messagewidget
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsavefile.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QFile \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfile.h \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QPushButton \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../ChatiKClient/vuex.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSettings \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsettings.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QColor \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qcolor.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QDesktopServices \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qdesktopservices.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QUrl \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qurl.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QMenu \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qmenu.h
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qmenu.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QFileDialog \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QPalette \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qpalette.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o messagewidget.o ../ChatiKClient/messagewidget.cpp
 
 serverconfigdialog.o: ../ChatiKClient/serverconfigdialog.cpp ../ChatiKClient/serverconfigdialog.h \
@@ -2254,6 +2306,8 @@ serverconfigdialog.o: ../ChatiKClient/serverconfigdialog.cpp ../ChatiKClient/ser
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsettings.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearray.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QColor \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qcolor.h \
 		../ChatiKClient/transportinginterfaces.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsondocument.h \
@@ -2296,7 +2350,9 @@ transportinginterfaces.o: ../ChatiKClient/transportinginterfaces.cpp ../ChatiKCl
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSaveFile \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsavefile.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QFile \
-		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfile.h
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qfile.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/QFileDialog \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtWidgets.framework/Headers/qfiledialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o transportinginterfaces.o ../ChatiKClient/transportinginterfaces.cpp
 
 userelements.o: ../ChatiKClient/userelements.cpp ../ChatiKClient/userelements.h \
@@ -2346,6 +2402,8 @@ usernameeditdialog.o: ../ChatiKClient/usernameeditdialog.cpp ../ChatiKClient/use
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsettings.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearray.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QColor \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qcolor.h \
 		../ChatiKClient/transportinginterfaces.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsondocument.h \
@@ -2374,6 +2432,8 @@ vuex.o: ../ChatiKClient/vuex.cpp ../ChatiKClient/vuex.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qsettings.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QByteArray \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qbytearray.h \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QColor \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qcolor.h \
 		../ChatiKClient/transportinginterfaces.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QJsonDocument \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/qjsondocument.h \
@@ -2616,6 +2676,8 @@ xmlsavedialog.o: ../ChatiKClient/xmlsavedialog.cpp ../ChatiKClient/xmlsavedialog
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSaveFile \
 		../ChatiKClient/vuex.h \
 		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtCore.framework/Headers/QSettings \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/QColor \
+		/Users/danielemelyanenko/Qt/6.3.2/macos/lib/QtGui.framework/Headers/qcolor.h \
 		ui_xmlsavedialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o xmlsavedialog.o ../ChatiKClient/xmlsavedialog.cpp
 
@@ -2624,6 +2686,9 @@ moc_client.o: moc_client.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
+
+moc_messagecolordialog.o: moc_messagecolordialog.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_messagecolordialog.o moc_messagecolordialog.cpp
 
 moc_serverconfigdialog.o: moc_serverconfigdialog.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_serverconfigdialog.o moc_serverconfigdialog.cpp

@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "messagewidget.h"
+#include "messagecolordialog.h"
 
 #include <QScrollArea>
 #include <QColorDialog>
@@ -58,6 +59,12 @@ void MainWindow::openFileDialog()
                                              );
     Client::Instance().sendFile(*clientImg);
     delete clientImg;
+}
+
+void MainWindow::updateMessagesSlot()
+{
+
+    updateMessages();
 }
 
 void MainWindow::on_connectButton_clicked()
@@ -326,7 +333,22 @@ void MainWindow::on_actionBackground_Color_triggered()
 
 void MainWindow::on_actionMessage_Color_triggered()
 {
-    Vuex::Instance().messagesColor = QColorDialog::getColor();
+    MessageColorDialog * messageColorDialog = new MessageColorDialog(this);
+    messageColorDialog->show();
+    connect(messageColorDialog, &MessageColorDialog::accepted, this, &MainWindow::updateMessagesSlot);
+}
+
+
+void MainWindow::on_actionIP_show_hide_triggered()
+{
+    Vuex::Instance().showIp = !Vuex::Instance().showIp;
+    updateMessages();
+}
+
+
+void MainWindow::on_actionTime_Show_Hide_triggered()
+{
+    Vuex::Instance().showTime = !Vuex::Instance().showTime;
     updateMessages();
 }
 

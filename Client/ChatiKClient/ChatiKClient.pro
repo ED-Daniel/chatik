@@ -15,6 +15,7 @@ SOURCES += \
     client.cpp \
     main.cpp \
     mainwindow.cpp \
+    messagecolordialog.cpp \
     messagewidget.cpp \
     serverconfigdialog.cpp \
     transportinginterfaces.cpp \
@@ -26,6 +27,7 @@ SOURCES += \
 HEADERS += \
     client.h \
     mainwindow.h \
+    messagecolordialog.h \
     messagewidget.h \
     serverconfigdialog.h \
     transportinginterfaces.h \
@@ -36,6 +38,7 @@ HEADERS += \
 
 FORMS += \
     mainwindow.ui \
+    messagecolordialog.ui \
     serverconfigdialog.ui \
     usernameeditdialog.ui \
     xmlsavedialog.ui

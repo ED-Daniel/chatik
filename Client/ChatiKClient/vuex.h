@@ -15,7 +15,8 @@ public:
         return vuex;
     }
 
-    QColor messagesColor;
+    QColor messagesColor = Qt::transparent;
+    QColor textMessageColor = Qt::white;
     bool showIp = true;
     bool showTime = true;
 
