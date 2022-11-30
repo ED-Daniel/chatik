@@ -14,8 +14,10 @@ public:
     MessageWidget(QWidget *parent, ClientImage *sentFile = nullptr);
 private:
     ClientImage *sentFile = nullptr;
-private slots:
+public slots:
+    void openMenu();
     void saveToFile();
+    void openInApplication();
 };
 
 #endif // MESSAGEWIDGET_H

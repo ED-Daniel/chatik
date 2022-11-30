@@ -1,5 +1,7 @@
 #include"transportinginterfaces.h"
 
+#include <QFileDialog>
+
 TextMessage::TextMessage(QString sender, QString message, QString time, QString ip) : BasicMessage(SocketEvents::MESSAGE)
 {
     jsonObject.insert("sender", sender);
@@ -147,9 +149,12 @@ QJsonArray ClientsInfo::getClients() const
 }
 
 
-ClientImage::ClientImage(QString ip, QByteArray imageBytes) : BasicMessage(SocketEvents::SEND_CLIENT_IMAGE)
+ClientImage::ClientImage(QString ip, QString sender, QString fileName, QString time, QByteArray imageBytes) : BasicMessage(SocketEvents::SEND_CLIENT_IMAGE)
 {
     jsonObject.insert("ip", ip);
+    jsonObject.insert("sender", sender);
+    jsonObject.insert("time", time);
+    jsonObject.insert("file_name", fileName);
     jsonObject.insert("size", imageBytes.size());
     this->imageBytes = std::move(imageBytes);
 
@@ -165,10 +170,8 @@ ClientImage::ClientImage(QByteArray fromJson) : BasicMessage(fromJson)
 
     QByteArray jsonSizeBytes = fromJson.first(8);
     qsizetype jsonSize = to_qsizetype(jsonSizeBytes);
-    QByteArray jsonArray;
-    for (qsizetype i = 8; i < jsonSize + 8; i++) {
-        jsonArray.append(fromJson[i]);
-    }
+    qDebug() << jsonSize << "RECV JSON SIZE";
+    QByteArray jsonArray = fromJson.mid(8, jsonSize);
 
     QJsonParseError parseError;
     document = QJsonDocument::fromJson(jsonArray, &parseError);
@@ -196,6 +199,7 @@ QByteArray ClientImage::getBytes() const
     QByteArray bytesSize;
 
     qsizetype s = bytes.size();
+    qDebug() << s << "SENT JSON SIZE";
     for(int i = 0; i != sizeof(s); ++i)
     {
       bytesSize.prepend((char)((s & (0xFF << (i*8))) >> (i*8)));
@@ -220,11 +224,37 @@ void ClientImage::saveToFile()
     file.commit();
 }
 
+void ClientImage::saveToFile(QString path)
+{
+    QSaveFile file(path);
+    file.open(QIODevice::WriteOnly);
+    file.write(imageBytes);
+    file.commit();
+}
+
+QString ClientImage::getIp()
+{
+    return jsonObject["ip"].toString();
+}
+
+QString ClientImage::getFileName()
+{
+    return jsonObject["file_name"].toString();
+}
+
+QString ClientImage::getTime()
+{
+    return jsonObject["time"].toString();
+}
+
+QString ClientImage::getSender()
+{
+    return jsonObject["sender"].toString();
+}
+
 qsizetype to_qsizetype(QByteArray data) {
     qsizetype v = 0;
-    for (int i = 0; i < 8; i++) {
-      v = (v << 8) | data[i];
-    }
+    v = ((unsigned char)data[0]<<56) | ((unsigned char)data[1]<<48) | ((unsigned char)data[2]<<40) | ((unsigned char)data[3]<<32) | (unsigned char)(data[4]<<24) | (unsigned char)(data[5]<<16) | (unsigned char)(data[6]<<8) | (unsigned char)data[7];
 
     return v;
 }

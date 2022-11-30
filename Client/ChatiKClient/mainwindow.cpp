@@ -245,12 +245,17 @@ void MainWindow::on_actionProfile_Picture_triggered()
     QFile* imageFile = new QFile(fileName);
     imageFile->open(QIODevice::ReadOnly);
     QByteArray imageBytes = imageFile->readAll();
-    imageFile->close();
-    delete imageFile;
 
     Vuex::Instance().setProfileImageBytes(imageBytes);
-    ClientImage *clientImg = new ClientImage("127.0.0.1", Vuex::Instance().getProfileImageBytes());
+    ClientImage *clientImg = new ClientImage(Client::Instance().getIp(),
+                                             Vuex::Instance().getUsername(),
+                                             imageFile->fileName(),
+                                             QDateTime::currentDateTime().toString(),
+                                             Vuex::Instance().getProfileImageBytes()
+                                             );
     Client::Instance().sendFile(*clientImg);
     delete clientImg;
+    imageFile->close();
+    delete imageFile;
 }
 

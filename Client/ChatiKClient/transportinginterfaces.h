@@ -92,13 +92,19 @@ public:
 
 class ClientImage : public BasicMessage {
 public:
-    ClientImage(QString ip, QByteArray imageBytes);
+    ClientImage(QString ip, QString sender, QString fileName, QString time, QByteArray imageBytes);
     ClientImage(QByteArray fromJson);
     ClientImage(QJsonObject fromObject);
 
     QByteArray getBytes() const;
 
     void saveToFile();
+    void saveToFile(QString path);
+
+    QString getIp();
+    QString getFileName();
+    QString getTime();
+    QString getSender();
 private:
     QByteArray imageBytes;
 };
