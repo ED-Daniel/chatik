@@ -2,6 +2,8 @@
 
 #include <QVBoxLayout>
 #include <QPushButton>
+#include <QDesktopServices>
+#include <QUrl>
 
 MessageWidget::MessageWidget(QWidget *parent, TextMessage messageInfo)
 {
@@ -34,6 +36,7 @@ MessageWidget::MessageWidget(QWidget *parent, ClientImage *sentFile)
     fileOpenButton->setText("OPEN FILE");
     layout->addWidget(fileOpenButton);
 
+
 }
 
 void MessageWidget::saveToFile()
@@ -41,4 +44,6 @@ void MessageWidget::saveToFile()
     if (sentFile != nullptr) {
         sentFile->saveToFile();
     }
+
+    QDesktopServices::openUrl(QUrl("file:///Users/danielemelyanenko/Documents/test.jpg"));
 }

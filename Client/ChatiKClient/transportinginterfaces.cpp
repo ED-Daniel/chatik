@@ -158,6 +158,11 @@ ClientImage::ClientImage(QString ip, QByteArray imageBytes) : BasicMessage(Socke
 
 ClientImage::ClientImage(QByteArray fromJson) : BasicMessage(fromJson)
 {
+    QSaveFile file1("/Users/danielemelyanenko/Documents/recievedBytes.txt");
+    file1.open(QIODevice::WriteOnly);
+    file1.write(fromJson);
+    file1.commit();
+
     QByteArray jsonSizeBytes = fromJson.first(8);
     qsizetype jsonSize = to_qsizetype(jsonSizeBytes);
     QByteArray jsonArray;
@@ -171,7 +176,7 @@ ClientImage::ClientImage(QByteArray fromJson) : BasicMessage(fromJson)
 
     qsizetype imageSize = jsonObject["size"].toInteger();
     qDebug() << imageSize;
-    QByteArray imageBytes = fromJson.last(imageSize);
+    QByteArray imageBytes = fromJson.mid(8 + jsonSize, imageSize);
     QSaveFile file("/Users/danielemelyanenko/Documents/recievedImage.jpg");
     file.open(QIODevice::WriteOnly);
     file.write(imageBytes);
@@ -209,7 +214,7 @@ QByteArray ClientImage::getBytes() const
 
 void ClientImage::saveToFile()
 {
-    QSaveFile file("/Users/danielemelyanenko/Documents/test.txt");
+    QSaveFile file("/Users/danielemelyanenko/Documents/test.jpg");
     file.open(QIODevice::WriteOnly);
     file.write(imageBytes);
     file.commit();
